@@ -34,9 +34,9 @@ class DatarunpremiumView extends Ui.DataField {
 	hidden var jTimertime = 0;
 	hidden var uBlackBackground = false;
 	
-	hidden var fieldValue = [1, 2, 3, 4, 5];
-	hidden var fieldLabel = [1, 2, 3, 4, 5];
-	hidden var fieldFormat = [1, 2, 3, 4, 5];	
+	hidden var fieldValue = [1, 2, 3, 4, 5, 6, 7];
+	hidden var fieldLabel = [1, 2, 3, 4, 5, 6, 7];
+	hidden var fieldFormat = [1, 2, 3, 4, 5, 6, 7];	
 
     hidden var Averagespeedinmper3sec 			= 0;
     hidden var Averagespeedinmper5sec 			= 0;
@@ -64,6 +64,8 @@ class DatarunpremiumView extends Ui.DataField {
 
     hidden var uUpperLeftMetric            = 0;    //! Timer is default
     hidden var uUpperRightMetric           = 4;    //! Distance is default
+    hidden var uMiddleLeftMetric           = 8;    //! Pace is default    
+    hidden var uMiddleRightMetric           = 50;    //! Cadence is default    
     hidden var uBottomLeftMetric            = 8;    //! Pace is default
     hidden var uBottomRightMetric           = 45;    //! HR is default
     hidden var uRequiredPower		 		= "000:999";
@@ -89,7 +91,7 @@ class DatarunpremiumView extends Ui.DataField {
     hidden var mLapSpeed 					= 0;
     hidden var mLastLapSpeed 				= 0;
            
-	hidden var metric = [1, 2, 3, 4, 5];
+	hidden var metric = [1, 2, 3, 4, 5, 6, 7];
 	hidden var Garminfont_value_x_small = Graphics.FONT_NUMBER_MILD;
 	hidden var Garminfont_value_small = Graphics.FONT_NUMBER_MEDIUM;
 	hidden var Garminfont_value = Graphics.FONT_NUMBER_HOT;
@@ -102,8 +104,10 @@ class DatarunpremiumView extends Ui.DataField {
          var mApp = Application.getApp();
          metric[1]    	= mApp.getProperty("pUpperLeftMetric");
          metric[2]   	= mApp.getProperty("pUpperRightMetric");
-         metric[3]   	= mApp.getProperty("pBottomLeftMetric");
-         metric[4]  	= mApp.getProperty("pBottomRightMetric");
+    	 metric[3]   	= mApp.getProperty("pMiddleLeftMetric");        	 
+    	 metric[4]		= mApp.getProperty("pMiddleRightMetric");
+         metric[5]   	= mApp.getProperty("pBottomLeftMetric");
+         metric[6]  	= mApp.getProperty("pBottomRightMetric");
          uRoundedPace        = mApp.getProperty("pRoundedPace");
          uBacklight          = mApp.getProperty("pBacklight");
          umyNumber			 = mApp.getProperty("myNumber");
@@ -248,7 +252,7 @@ class DatarunpremiumView extends Ui.DataField {
 
 		//!Fill field metrics
 		var i = 0; 
-	    for (i = 1; i < 5; ++i) {	    
+	    for (i = 1; i < 7; ++i) {	    
         	if (metric[i] == 0) {
             	fieldValue[i] = (info.timerTime != null) ? info.timerTime / 1000 : 0;
             	fieldLabel[i] = "Timer";

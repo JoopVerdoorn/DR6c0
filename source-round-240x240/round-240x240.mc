@@ -25,14 +25,23 @@ class DeviceView extends PowerView {
 		//! Draw separator lines
         dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
-        dc.drawLine(0, 120,  240, 120);
-        dc.drawLine(120, 29,  120, 214);
 
+        //! Horizontal thirds
+        dc.drawLine(40,  28,  200, 28);
+        dc.drawLine(0,   92,  237, 92);
+        dc.drawLine(0,   156, 237, 156);
+
+        //! Top vertical divider
+        dc.drawLine(119, 29,  119, 92);
+
+        //! Centre vertical divider
+        dc.drawLine(164, 92,  164, 156);
+
+        //! Bottom vertical divider
+        dc.drawLine(119, 156, 119, 219);
+        
         //! Bottom horizontal divider
-        dc.drawLine(45, 214, 195, 214);
-
-        //! Top horizontal divider
-        dc.drawLine(33, 29, 207, 29);		
+        dc.drawLine(53, 219, 187, 219);	
 
 		//! Display metrics
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
@@ -44,31 +53,35 @@ class DeviceView extends PowerView {
 			dc.drawText(120, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
 		}
 
-		for (var i = 1; i < 5; ++i) {
+		for (var i = 1; i < 7; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,085,072,012,099,073,041");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"069,069,073,013,074,073,037");
 	       	} else if ( i == 2 ) {	//!upper row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,085,182,123,099,167,041");
-	       	} else if ( i == 3 ) {  //!lower row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,153,072,012,145,073,199");
-	       	} else if ( i == 4 ) {	//!lower row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"173,153,182,123,167,167,199");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"170,069,180,121,074,167,037");
+	       	} else if ( i == 3 ) {  //!middle row, left
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"110,123,000,000,000,023,120");
+	       	} else if ( i == 4 ) {  //!middle row, right
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,133,000,000,000,201,101");
+	       	} else if ( i == 5 ) {	//!lower row, left
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"070,177,073,014,172,080,207");
+	       	} else if ( i == 6 ) {	//!lower row, right
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"170,177,180,121,182,157,207");
 	       	}     	
 		}
 
 		//! Bottom battery indicator
 		var mBattcolor = (pwr > 15) ? mColourFont : Graphics.COLOR_RED;
 		dc.setColor(mBattcolor, Graphics.COLOR_TRANSPARENT);
-		dc.fillRectangle(92, 219, 54, 15);
-		dc.fillRectangle(146, 222, 3, 8);
+		dc.fillRectangle(92, 222, 54, 15);
+		dc.fillRectangle(146, 225, 3, 8);
 		
 		dc.setColor(mBattcolor, Graphics.COLOR_TRANSPARENT);
-		dc.fillRectangle(94, 221, 50, 11);
+		dc.fillRectangle(94, 224, 50, 11);
 		
 		dc.setColor(mColourBackGround, Graphics.COLOR_TRANSPARENT);
 		var Startstatuspwrbr = 94 + pwr*0.5  ;
 		var Endstatuspwrbr = 50 - pwr*0.5 ;
-		dc.fillRectangle(Startstatuspwrbr, 221, Endstatuspwrbr, 11);	
+		dc.fillRectangle(Startstatuspwrbr, 224, Endstatuspwrbr, 11);	
 
 	   } else {
 	   //! Display demo screen
