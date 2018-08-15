@@ -25,78 +25,58 @@ class DeviceView extends PowerView {
 		//! Draw separator lines
         dc.setColor(mColourLine, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
+        dc.drawLine(0, 109,  218, 109);
+        dc.drawLine(109, 29,  109, 191);
 
-        //! Horizontal thirds
-        dc.drawLine(0,   84,  215, 84);
-        dc.drawLine(0,   142, 215, 142);
-
-        //! Top vertical divider
-        dc.drawLine(109, 28,  109, 84);
-
-        //! Centre vertical dividers
-        dc.drawLine(66,  84,  66,  142);
-        dc.drawLine(149, 84,  149, 142);
-
-        //! Bottom vertical divider
-        dc.drawLine(109, 142, 109, 202);
-                
+        //! Top horizontal divider
+        dc.drawLine(30, 27, 188, 27);	
+                        
         //! Bottom horizontal divider
-        dc.drawLine(50, 202, 175, 202);
-
-        //! Top centre mini-field separator
-        dc.drawRoundedRectangle(75, -8, 68, 36, 4);
+        dc.drawLine(33, 191, 185, 191);
 
 		//! Display metrics
-        dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
-
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
  		
 		//! Show clock with current time in top
-		var myTime = Toybox.System.getClockTime(); 
-	   	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
-		dc.drawText(108, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
-	
-	
-		for (var i = 1; i < 8; ++i) {
-	    	if ( i == 1 ) {			//!upper row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,063,065,015,067,062,036");
-	       	} else if ( i == 2 ) {	//!upper row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"154,063,163,114,067,152,036");
-	       	} else if ( i == 3 ) {  //!middle row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"031,121,000,000,000,033,092");
-	       	} else if ( i == 4 ) {	//!middle row, middle
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"107,121,000,000,000,109,092");
-	       	} else if ( i == 5 ) {  //!middle row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"183,121,000,000,000,183,092");
-	       	} else if ( i == 6 ) {	//!lower row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"063,163,065,015,157,073,191");
-	       	} else if ( i == 7 ) {	//!lower row, right
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"150,163,161,112,167,140,191");
-       		}       	
+		if (uShowlaps == false) {
+			var myTime = Toybox.System.getClockTime(); 
+	    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
+			dc.drawText(108, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
 		}
-
+		
+		for (var i = 1; i < 5; ++i) {
+	    	if ( i == 1 ) {			//!upper row, left
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"059,079,065,010,089,066,040");
+	       	} else if ( i == 2 ) {	//!upper row, right
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"162,079,170,115,089,153,040");
+	       	} else if ( i == 3 ) {  //!lower row, left
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"059,137,065,010,147,066,175");
+	       	} else if ( i == 4 ) {	//!lower row, right
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"162,137,170,115,147,153,175");
+	       	}     	
+		}
 
 		//! Bottom battery indicator
 		var mBattcolor = (pwr > 15) ? mColourFont : Graphics.COLOR_RED;
 		dc.setColor(mBattcolor, Graphics.COLOR_TRANSPARENT);
-		dc.fillRectangle(87, 204, 44, 11);
-		dc.fillRectangle(131, 207, 3, 5);
+		dc.fillRectangle(84, 197, 49, 14);
+		dc.fillRectangle(133, 200, 3, 7);
 		
 		dc.setColor(mBattcolor, Graphics.COLOR_TRANSPARENT);
-		dc.fillRectangle(89, 206, 40, 7);
+		dc.fillRectangle(85, 198, 45, 10);
 		
 		dc.setColor(mColourBackGround, Graphics.COLOR_TRANSPARENT);
-		var Startstatuspwrbr = 89 + pwr*0.5  ;
-		var Endstatuspwrbr = 40 - pwr*0.5 ;
-		dc.fillRectangle(Startstatuspwrbr, 206, Endstatuspwrbr, 7);	
+		var Startstatuspwrbr = 85 + pwr*0.5  ;
+		var Endstatuspwrbr = 45 - pwr*0.5 ;
+		dc.fillRectangle(Startstatuspwrbr, 199, Endstatuspwrbr, 10);	
 
 	   } else {
 	   //! Display demo screen
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
-	
+
 		if (umyNumber == mtest) {
-      		dc.drawText(109, 36, Graphics.FONT_XTINY, "Datarun premium", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-      		dc.drawText(109, 64, Graphics.FONT_XTINY, "Version 1.10", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+      		dc.drawText(109, 36, Graphics.FONT_XTINY, "Datarun premium with 4 metrics", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+      		dc.drawText(109, 64, Graphics.FONT_XTINY, "Version " + appversion, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(109, 109, Graphics.FONT_TINY, "Registered !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(74, 145, Graphics.FONT_XTINY, "License code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(164, 145, Graphics.FONT_XTINY, mtest, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
@@ -109,7 +89,7 @@ class DeviceView extends PowerView {
 			dc.drawText(146, 125, Graphics.FONT_NUMBER_MEDIUM, ID1, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(55, 168, Graphics.FONT_MEDIUM, "ID 2: " , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(146, 162, Graphics.FONT_NUMBER_MEDIUM, ID2, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-			dc.drawText(109, 195, Graphics.FONT_XTINY, "Version 1.10", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+			dc.drawText(109, 195, Graphics.FONT_XTINY, "Version " + appversion, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
       	}
 	   }
 	   
