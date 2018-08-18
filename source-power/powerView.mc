@@ -107,7 +107,6 @@ class PowerView extends CiqView {
         mLastLapPowerMarker      	= 0;
         mLastLapElapsedPower     	= 0; 
         mLastLapTimerTimePwr     	= 0;
-        mT = 0;   
     }
 	
 	function onUpdate(dc) {
@@ -189,7 +188,7 @@ class PowerView extends CiqView {
 		}		
 
 		var i = 0; 
-	    for (i = 1; i < 5; ++i) {	    
+	    for (i = 1; i < 7; ++i) {	    
         	if (metric[i] == 20) {
             	fieldValue[i] = (info.currentPower != null) ? info.currentPower : 0;
             	fieldLabel[i] = "Power";

@@ -60,7 +60,7 @@ class CiqView extends ExtramemView {
 		dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
 
 		var i = 0; 
-	    for (i = 1; i < 5; ++i) {
+	    for (i = 1; i < 7; ++i) {
 	        if (metric[i] == 40) {
     	        fieldValue[i] = (info.currentSpeed != null) ? 3.6*info.currentSpeed*1000/unitP : 0;
         	    fieldLabel[i] = "Speed";
@@ -169,7 +169,7 @@ class CiqView extends ExtramemView {
     	dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     	
         if ( fieldformat.equals("time" ) == true ) {    
-	    	if ( counter == 1 or counter == 2 or counter == 3 or counter == 4 ) {  
+	    	if ( counter == 1 or counter == 2 or counter == 5 or counter == 6 ) {  
 	    		var fTimerSecs = (fieldvalue % 60).format("%02d");
         		var fTimer = (fieldvalue / 60).format("%d") + ":" + fTimerSecs;  //! Format time as m:ss
 	    		var xx = x;
@@ -180,19 +180,7 @@ class CiqView extends ExtramemView {
             		dc.drawText(xh, yh, Garminfont_value_x_small, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
             		fTimer = (fieldvalue / 60 % 60).format("%02d") + ":" + fTimerSecs;  
         		}
-        		if (VA3VA3M == true and fieldvalue < 3599) {
-        			if ( counter == 3) {
-        				dc.drawText(xx, y, Garminfont_value, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        			} else {
-        				dc.drawText(xx, y, Garminfont_value_small, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        			}
-        		} else {
-        			if ( counter == 3) {
-        				dc.drawText(xx, y, Garminfont_value, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        			} else {
-        				dc.drawText(xx, y, Garminfont_value_small, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        			}
-        		}	
+    			dc.drawText(xx, y, Garminfont_value_small, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);	
         	}
         } else {
         	if ( counter == 3) {
