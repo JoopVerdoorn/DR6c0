@@ -1,11 +1,8 @@
 <resources>
 	<fonts>
-    	<font id="Garmin2" filename="fonts/Oswald75metriBigfontplus.fnt"/>
-    	<font id="Garmin3" filename="fonts/Oswald45labelBigfontplus.fnt"/>
-    	<font id="Garmin4" filename="fonts/Oswald83metriBigfontplus.fnt"/>
 	</fonts>
   <properties>
-    <property id="pAppversion" type="string">1.34</property>
+    <property id="pAppversion" type="string">1.36</property>
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>
     <property id="pMiddleLeftMetric" type="number">45</property>    
@@ -37,8 +34,8 @@
     <!-- Beta name:
     <string id="AppName">Datarun premium with 6 metrics</string>
     -->
-    <string id="AppVersion">1.34</string>
-    <string id="lDummysetting4version">Version 1.34 of Datarun premium with 6 metrics (dummy setting)</string>
+    <string id="AppVersion">1.36</string>
+    <string id="lDummysetting4version">Version 1.36 of Datarun premium with 6 metrics (dummy setting)</string>
     <string id="lTimerDisplay">Timer field</string>
     <string id="lTimerTimer">Timer</string>
     <string id="lTimerLap">Current lap time</string>

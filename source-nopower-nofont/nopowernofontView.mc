@@ -85,7 +85,7 @@ class PowerView extends CiqView {
         }
 
         var i = 0; 
-	    for (i = 1; i < 5; ++i) {
+	    for (i = 1; i < 7; ++i) {
 	        if (metric[i] == 14) {
     	        fieldValue[i] = Math.round(mETA).toNumber();
         	    fieldLabel[i] = "ETA";
@@ -115,15 +115,19 @@ class PowerView extends CiqView {
         mRacetime = mRacehour*3600 + mRacemin*60 + mRacesec;		
 		
 		//! Display colored labels on screen
-		for (var i = 1; i < 5; ++i) {
+		for (var i = 1; i < 8; ++i) {
 		   	if ( i == 1 ) {			//!upper row, left    	
-	    		Coloring(dc,i,fieldValue[i],"020,029,100,025");
+	    		Coloring(dc,i,fieldValue[i],"018,029,100,019");
 		   	} else if ( i == 2 ) {	//!upper row, right
-		   		Coloring(dc,i,fieldValue[i],"120,029,100,025");
-	       	} else if ( i == 3 ) {  //!lower row, left
-	    		Coloring(dc,i,fieldValue[i],"020,188,100,026");
-		   	} else if ( i == 4 ) {	//!lower row, middle
-		 		Coloring(dc,i,fieldValue[i],"120,188,100,026");
+		   		Coloring(dc,i,fieldValue[i],"120,029,100,019");
+	       	} else if ( i == 3 ) {  //!middle row, left
+	    		Coloring(dc,i,fieldValue[i],"000,93,060,062");
+	      	} else if ( i == 4 ) {  //!middle row, right
+	    		Coloring(dc,i,fieldValue[i],"165,093,077,019");
+		   	} else if ( i == 5 ) {	//!lower row, left
+		   		Coloring(dc,i,fieldValue[i],"018,199,100,019");
+	      	} else if ( i == 6 ) {	//!lower row, right
+	    		Coloring(dc,i,fieldValue[i],"120,199,100,019");
 	    	}       	
 		}
 	   

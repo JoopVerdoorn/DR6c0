@@ -135,7 +135,7 @@ class ExtramemView extends DatarunpremiumView {
 		totalRPw = 0;       
       
         var i = 0; 
-	    for (i = 1; i < 5; ++i) {
+	    for (i = 1; i < 7; ++i) {
 	        if (metric[i] == 38) {
     	        fieldValue[i] = 0; //! becomes Power zone later
         	    fieldLabel[i] = "P zone";
