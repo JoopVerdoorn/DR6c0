@@ -35,19 +35,14 @@ class PowerView extends CiqView {
 
     //! Store last lap quantities and set lap markers
     function onTimerLap() {
-        var info = Activity.getActivityInfo();
-        mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
-        mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
-        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
-        mLastLapTimeMarker      	= jTimertime;
+		LapactionNoPower ();
+	}
 
-        mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
-        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
-        mLastLapHeartrateMarker     = mElapsedHeartrate;
-        mLastLapTimeHRMarker        = mHeartrateTime;
-        mLaps++;
-    }
-
+	//! Store last lap quantities and set lap markers after a step within a structured workout
+	function onWorkoutStepComplete() {
+		LapactionNoPower ();
+	}
+	
     //! Current activity is ended
     function onTimerReset() {
         mPrevElapsedDistance        = 0;
@@ -154,5 +149,19 @@ class PowerView extends CiqView {
         	dc.fillRectangle(x, y, w, h);
         }
 	}
+
+	function LapactionNoPower () {
+        var info = Activity.getActivityInfo();
+        mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
+        mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
+        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
+        mLastLapTimeMarker      	= jTimertime;
+
+        mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
+        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
+        mLastLapHeartrateMarker     = mElapsedHeartrate;
+        mLastLapTimeHRMarker        = mHeartrateTime;
+        mLaps++;
+    }
 
 }

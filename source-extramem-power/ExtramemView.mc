@@ -137,7 +137,7 @@ class ExtramemView extends DatarunpremiumView {
         var i = 0; 
 	    for (i = 1; i < 7; ++i) {
 	        if (metric[i] == 38) {
-    	        fieldValue[i] = 0; //! becomes Power zone later
+    	        fieldValue[i] =  (info.currentPower != null) ? info.currentPower : 0;
         	    fieldLabel[i] = "P zone";
             	fieldFormat[i] = "0decimal";
 			} else if (metric[i] == 17) {

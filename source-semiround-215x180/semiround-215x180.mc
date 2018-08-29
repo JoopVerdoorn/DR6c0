@@ -53,7 +53,7 @@ class DeviceView extends PowerView {
     	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
 		dc.drawText(98, -4, Graphics.FONT_NUMBER_MILD, strTime, Graphics.TEXT_JUSTIFY_CENTER);
 
-		for (var i = 1; i < 8; ++i) {
+		for (var i = 1; i < 7; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"062,041,065,015,047,052,015");
 	       	} else if ( i == 2 ) {	//!upper row, right
