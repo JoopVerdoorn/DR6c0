@@ -2,7 +2,7 @@
 	<fonts>
 	</fonts>
   <properties>
-    <property id="pAppversion" type="string">1.42</property>
+    <property id="pAppversion" type="string">1.44</property>
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>
     <property id="pMiddleLeftMetric" type="number">45</property>    
@@ -34,8 +34,8 @@
     <!-- Beta name:
     <string id="AppName">Datarun premium with 6 metrics</string>
     -->
-    <string id="AppVersion">1.42</string>
-    <string id="lDummysetting4version">Version 1.42 of Datarun premium with 6 metrics (dummy setting)</string>
+    <string id="AppVersion">1.44</string>
+    <string id="lDummysetting4version">Version 1.44 of Datarun premium with 6 metrics (dummy setting)</string>
     <string id="lTimerDisplay">Timer field</string>
     <string id="lTimerTimer">Timer</string>
     <string id="lTimerLap">Current lap time</string>
@@ -121,7 +121,7 @@
     <string id="lLP2HRratio">Lap power to heartrate ratio (only for Fenix 5x, Fenix 5 plus series and D2 Charlie/Delta)</string>
     <string id="lLLP2HRratio">Last lap power to heartrate ratio (only for Fenix 5x, Fenix 5 plus series and D2 Charlie/Delta)</string>
     <string id="lAP2HRratio">Average power to heartrate ratio (only for Fenix 5x, Fenix 5 plus series and D2 Charlie/Delta)</string>
-
+	<string id="lSPowerzone">Current powerzone (only for Fenix 5x, Fenix 5 plus series and D2 Charlie/Delta)</string>
  </strings>
 
   <settings>
@@ -211,6 +211,7 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         
         <listEntry value="20">@Strings.lSPower</listEntry>
+        <listEntry value="38">@Strings.lSPowerzone</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
@@ -228,8 +229,6 @@
         <listEntry value="33">@Strings.lLP2HRratio</listEntry>
         <listEntry value="34">@Strings.lLLP2HRratio</listEntry>
         <listEntry value="35">@Strings.lAP2HRratio</listEntry>
-
-
       </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pUpperRightMetric" title="@Strings.lUpperRightMetric">
@@ -269,6 +268,7 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         
         <listEntry value="20">@Strings.lSPower</listEntry>
+        <listEntry value="38">@Strings.lSPowerzone</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
@@ -286,8 +286,6 @@
         <listEntry value="33">@Strings.lLP2HRratio</listEntry>
         <listEntry value="34">@Strings.lLLP2HRratio</listEntry>
         <listEntry value="35">@Strings.lAP2HRratio</listEntry>
-
-
       </settingConfig>
     </setting>
 
@@ -316,19 +314,29 @@
         <listEntry value="48">@Strings.lLLHeartrate</listEntry>
         <listEntry value="49">@Strings.lAveraHeartrate</listEntry>
         <listEntry value="50">@Strings.lCadence</listEntry>
-
+        <listEntry value="51">@Strings.lAltitude</listEntry>
+        <listEntry value="52">@Strings.lElevationGain</listEntry>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        
         <listEntry value="20">@Strings.lSPower</listEntry>
+        <listEntry value="38">@Strings.lSPowerzone</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
         <listEntry value="23">@Strings.lLLPower</listEntry>
         <listEntry value="24">@Strings.lAPower</listEntry>
+        <listEntry value="31">@Strings.lCEFactor</listEntry>
         <listEntry value="25">@Strings.lLEIndex</listEntry>
         <listEntry value="26">@Strings.lLLEIndex</listEntry>
         <listEntry value="27">@Strings.lAEIndex</listEntry>
+        <listEntry value="32">@Strings.lAEFactor</listEntry>
         <listEntry value="28">@Strings.lLEFactor</listEntry>
         <listEntry value="29">@Strings.lLLEFactor</listEntry>
         <listEntry value="30">@Strings.lAEFactor</listEntry>
+        <listEntry value="36">@Strings.lCP2HRratio</listEntry>
+        <listEntry value="33">@Strings.lLP2HRratio</listEntry>
+        <listEntry value="34">@Strings.lLLP2HRratio</listEntry>
+        <listEntry value="35">@Strings.lAP2HRratio</listEntry>
       </settingConfig>
     </setting>
 
@@ -338,14 +346,13 @@
         <listEntry value="5">@Strings.lDistLap</listEntry>
         <listEntry value="6">@Strings.lDistLastLap</listEntry>
         <listEntry value="7">@Strings.lAvgLapD</listEntry>
-        <listEntry value="8">@Strings.lCurrentPace</listEntry>
-        <listEntry value="16">@Strings.lPaceper3km</listEntry>        
+        <listEntry value="8">@Strings.lCurrentPace</listEntry>        
+        <listEntry value="16">@Strings.lPaceper3km</listEntry>
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
-        <listEntry value="13">@Strings.lETArequiredpace</listEntry>
 
         <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
         <listEntry value="41">@Strings.lAveragesecSpeed</listEntry>
@@ -358,19 +365,29 @@
         <listEntry value="48">@Strings.lLLHeartrate</listEntry>
         <listEntry value="49">@Strings.lAveraHeartrate</listEntry>
         <listEntry value="50">@Strings.lCadence</listEntry>
-
+        <listEntry value="51">@Strings.lAltitude</listEntry>
+        <listEntry value="52">@Strings.lElevationGain</listEntry>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        
         <listEntry value="20">@Strings.lSPower</listEntry>
+        <listEntry value="38">@Strings.lSPowerzone</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
         <listEntry value="23">@Strings.lLLPower</listEntry>
         <listEntry value="24">@Strings.lAPower</listEntry>
+        <listEntry value="31">@Strings.lCEFactor</listEntry>
         <listEntry value="25">@Strings.lLEIndex</listEntry>
         <listEntry value="26">@Strings.lLLEIndex</listEntry>
         <listEntry value="27">@Strings.lAEIndex</listEntry>
+        <listEntry value="32">@Strings.lAEFactor</listEntry>
         <listEntry value="28">@Strings.lLEFactor</listEntry>
         <listEntry value="29">@Strings.lLLEFactor</listEntry>
         <listEntry value="30">@Strings.lAEFactor</listEntry>
+        <listEntry value="36">@Strings.lCP2HRratio</listEntry>
+        <listEntry value="33">@Strings.lLP2HRratio</listEntry>
+        <listEntry value="34">@Strings.lLLP2HRratio</listEntry>
+        <listEntry value="35">@Strings.lAP2HRratio</listEntry>
       </settingConfig>
     </setting>
 
@@ -412,6 +429,7 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         
         <listEntry value="20">@Strings.lSPower</listEntry>
+        <listEntry value="38">@Strings.lSPowerzone</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
@@ -468,6 +486,7 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         
         <listEntry value="20">@Strings.lSPower</listEntry>
+        <listEntry value="38">@Strings.lSPowerzone</listEntry>
         <listEntry value="21">@Strings.lAsecPower</listEntry>
         <listEntry value="37">@Strings.lPowper300km</listEntry>
         <listEntry value="22">@Strings.lLPower</listEntry>
