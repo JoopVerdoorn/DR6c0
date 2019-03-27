@@ -11,7 +11,7 @@ class DeviceView extends PowerView {
 	function onUpdate(dc) {
 		//! call the parent function in order to execute the logic of the parent
 		PowerView.onUpdate(dc);
-        
+                
 		//! Conditions for showing the demoscreen       
         if (uShowDemo == false) {
         	if (licenseOK == false && jTimertime > 900)  {
@@ -42,12 +42,12 @@ class DeviceView extends PowerView {
         
         //! Bottom horizontal divider
         dc.drawLine(53, 219, 187, 219);	
-
+        
 		//! Display metrics
-		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 
 		//! Show number of laps or clock with current time in top
-		if (uShowlaps == false) {
+		if (uMilClockAltern == 0) {		
 			var myTime = Toybox.System.getClockTime(); 
 	    	var strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d");
 			dc.drawText(120, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
@@ -59,14 +59,14 @@ class DeviceView extends PowerView {
 	       	} else if ( i == 2 ) {	//!upper row, right
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"170,069,180,121,074,167,037");
 	       	} else if ( i == 3 ) {  //!middle row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"110,123,000,000,000,023,120");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"095,123,096,016,136,008,140");
 	       	} else if ( i == 4 ) {  //!middle row, right
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"202,133,000,000,000,201,101");
 	       	} else if ( i == 5 ) {	//!lower row, left
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"070,177,073,014,172,080,207");
 	       	} else if ( i == 6 ) {	//!lower row, right
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"170,177,180,121,182,157,207");
-	       	}     	
+	       	}      	
 		}
 
 		//! Bottom battery indicator
@@ -106,6 +106,8 @@ class DeviceView extends PowerView {
 			dc.drawText(161, 178, Graphics.FONT_NUMBER_MEDIUM, ID2, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(120, 215, Graphics.FONT_XTINY, "Version " + appversion, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
       	}
-	   }  
+	   }
+	   
 	}
+
 }
