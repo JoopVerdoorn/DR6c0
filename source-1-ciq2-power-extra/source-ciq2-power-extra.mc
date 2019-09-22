@@ -21,6 +21,7 @@ class CiqView extends ExtramemView {
 	var lastsrunPower						= 0;
 	var setPowerWarning 					= 0;
 	var Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
+	var Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin4);
 		
     function initialize() {
         ExtramemView.initialize();
@@ -37,7 +38,19 @@ class CiqView extends ExtramemView {
 				rolavPowmaxsecs = (rolavPowmaxsecs < 30) ? 30 : rolavPowmaxsecs;
 			}
 		}	
-		Garminfont = (ID0 == 3624 or ID0 == 3588 or ID0 == 3762 or ID0 == 3761 or ID0 == 3757 or ID0 == 3758 or ID0 == 3759) ? Ui.loadResource(Rez.Fonts.Garmin1) : Graphics.FONT_NUMBER_MEDIUM;		
+		if (ID0 == 3588 or ID0 == 3832 or ID0 == 3624 or ID0 == 3952 or ID0 == 3762 or ID0 == 3962 or ID0 == 3761 or ID0 == 3961 or ID0 == 3757 or ID0 == 3931 or ID0 == 3758 or ID0 == 3932 or ID0 == 3759 or ID0 == 3959 or ID0 == 3798 or ID0 == 4023 or ID0 == 3799 or ID0 == 4024 or ID0 == 3621 or ID0 == 3600 or ID0 == 3411 or ID0 == 3645 or ID0 == 3622 or ID0 == 3646) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
+			Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin4);		
+		} else if (ID0 == 3801 or ID0 == 4026 ) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin2);
+			Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin5);
+		} else if (ID0 == 3802 or ID0 == 4027 ) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin3);
+			Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin6);
+		} else {
+			Garminfont = Graphics.FONT_NUMBER_MEDIUM;
+			Garminfontgroot = Graphics.FONT_NUMBER_HOT;
+		}			
     }
 
     //! Calculations we need to do every second even when the data field is not visible
@@ -310,11 +323,15 @@ class CiqView extends ExtramemView {
             		dc.drawText(xh, yh, Graphics.FONT_LARGE, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
             		fTimer = (fieldvalue / 60 % 60).format("%02d") + ":" + fTimerSecs;  
         		}
-       			dc.drawText(xx, y, Garminfont, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+				if ( counter == 3) {
+       				dc.drawText(xx, y, Garminfontgroot, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       			} else {	
+       				dc.drawText(xx, y, Garminfont, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       			}
         	}
         } else {
  			if ( counter == 3) {
-        		dc.drawText(x, y, Graphics.FONT_NUMBER_HOT, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        		dc.drawText(x, y, Garminfontgroot, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         	} else {
         		dc.drawText(x, y, Garminfont, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			}

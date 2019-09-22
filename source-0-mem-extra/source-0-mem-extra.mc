@@ -327,28 +327,70 @@ class ExtramemView extends DatarunpremiumView {
 	   //! Check whether demoscreen is showed or the metrics 
 	   if (uShowDemo == false ) {
 
-		//! Display colored labels on screen
-		for (var i = 1; i < 7; ++i) {
-		   	if ( i == 1 ) {			//!upper row, left    	
-	    		Coloring(dc,i,fieldValue[i],"018,029,100,019");
-		   	} else if ( i == 2 ) {	//!upper row, right
-		   		Coloring(dc,i,fieldValue[i],"120,029,100,019");
-	       	} else if ( i == 3 ) {  //!middle row, left
-	    		Coloring(dc,i,fieldValue[i],"000,93,016,062");
-	      	} else if ( i == 4 ) {  //!middle row, right
-	    		Coloring(dc,i,fieldValue[i],"165,093,077,019");
-		   	} else if ( i == 5 ) {	//!lower row, left
-		   		Coloring(dc,i,fieldValue[i],"018,199,100,019");
-	      	} else if ( i == 6 ) {	//!lower row, right
-	    		Coloring(dc,i,fieldValue[i],"120,199,100,019");
-	    	}       	
+			//! Display colored labels on screen	
+		if (ID0 == 3801 or ID0 == 4026 ) {  //! Fenix 6 pro labels
+			for (var i = 1; i < 7; ++i) {
+			   	if ( i == 1 ) {			//!upper row, left    	
+	    			Coloring(dc,i,fieldValue[i],"018,031,110,020");	    		
+		   		} else if ( i == 2 ) {	//!upper row, right
+		   			Coloring(dc,i,fieldValue[i],"130,031,108,020");
+		       	} else if ( i == 3 ) {  //!middle row, left
+	    			Coloring(dc,i,fieldValue[i],"000,101,017,067");
+	      		} else if ( i == 4 ) {  //!middle row, right
+		    		Coloring(dc,i,fieldValue[i],"179,101,083,019");
+			   	} else if ( i == 5 ) {	//!lower row, left
+		   			Coloring(dc,i,fieldValue[i],"018,217,110,019");
+		      	} else if ( i == 6 ) {	//!lower row, right
+		    		Coloring(dc,i,fieldValue[i],"130,217,108,019");
+		    	}
+		    }       	
+		} else if (ID0 == 3802 or ID0 == 4027 ) {     //! Fenix 6x pro labels
+			for (var i = 1; i < 7; ++i) {
+			   	if ( i == 1 ) {			//!upper row, left    	
+					Coloring(dc,i,fieldValue[i],"021,034,117,020");	    
+			   	} else if ( i == 2 ) {	//!upper row, right
+					Coloring(dc,i,fieldValue[i],"140,034,117,020");
+		       	} else if ( i == 3 ) {  //!middle row, left
+	    			Coloring(dc,i,fieldValue[i],"000,108,019,073");
+	      		} else if ( i == 4 ) {  //!middle row, right
+					Coloring(dc,i,fieldValue[i],"192,108,090,020");	
+			   	} else if ( i == 5 ) {	//!lower row, left
+					Coloring(dc,i,fieldValue[i],"021,235,117,020");
+				} else if ( i == 6 ) {	//!lower row, right	
+					Coloring(dc,i,fieldValue[i],"140,235,117,020");	
+		    	}
+		    }       	
+		} else {
+			for (var i = 1; i < 7; ++i) {
+			   	if ( i == 1 ) {			//!upper row, left    	
+	    			Coloring(dc,i,fieldValue[i],"018,029,100,019");
+		   		} else if ( i == 2 ) {	//!upper row, right
+			   		Coloring(dc,i,fieldValue[i],"120,029,100,019");
+		       	} else if ( i == 3 ) {  //!middle row, left
+	    			Coloring(dc,i,fieldValue[i],"000,093,016,062");
+	      		} else if ( i == 4 ) {  //!middle row, right
+		    		Coloring(dc,i,fieldValue[i],"165,093,077,019");
+			   	} else if ( i == 5 ) {	//!lower row, left
+			   		Coloring(dc,i,fieldValue[i],"018,199,100,019");
+	      		} else if ( i == 6 ) {	//!lower row, right
+		    		Coloring(dc,i,fieldValue[i],"120,199,100,019");
+		    	}
+		    }       	
 		}
 
 		//! Show number of laps or clock with current time in top
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 		if (uMilClockAltern == 2) { //! Show number of laps 
-			 dc.drawText(103, -4, Graphics.FONT_MEDIUM, mLaps, Graphics.TEXT_JUSTIFY_CENTER);
-			 dc.drawText(140, -1, Graphics.FONT_XTINY, "lap", Graphics.TEXT_JUSTIFY_CENTER);
+			if (ID0 == 3801 or ID0 == 4026 ) {
+				 dc.drawText(113, -3, Graphics.FONT_MEDIUM, mLaps, Graphics.TEXT_JUSTIFY_CENTER);
+				 dc.drawText(150, -1, Graphics.FONT_XTINY, "lap", Graphics.TEXT_JUSTIFY_CENTER);
+			} else if (ID0 == 3802 or ID0 == 4027 ) {
+				 dc.drawText(123, -2, Graphics.FONT_MEDIUM, mLaps, Graphics.TEXT_JUSTIFY_CENTER);
+				 dc.drawText(160, -1, Graphics.FONT_XTINY, "lap", Graphics.TEXT_JUSTIFY_CENTER);		
+			} else {	
+				 dc.drawText(103, -4, Graphics.FONT_MEDIUM, mLaps, Graphics.TEXT_JUSTIFY_CENTER);
+				 dc.drawText(140, -1, Graphics.FONT_XTINY, "lap", Graphics.TEXT_JUSTIFY_CENTER);
+			}
 		} else if (uMilClockAltern == 1) {	//! Show clock with AM and PM 	
 			var myTime = Toybox.System.getClockTime(); 
 			var AmPmhour = myTime.hour.format("%02d");
@@ -359,7 +401,13 @@ class ExtramemView extends DatarunpremiumView {
 				AmPmhour = AmPmhour - 12;
 			}
 	    	var strTime = AmPmhour + ":" + myTime.min.format("%02d") + " " + AmPm;
-			dc.drawText(130, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+	    	if (ID0 == 3801 or ID0 == 4026 ) {
+				dc.drawText(140, -3, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+	    	} else if (ID0 == 3802 or ID0 == 4027 ) {
+				dc.drawText(150, -2, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+	    	} else {
+				dc.drawText(130, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+			}
 		} else if (uMilClockAltern == 3) {		//! Display of metric in Clock field
 			var originalFontcolor = mColourFont;
 			var Temp;
@@ -396,7 +444,13 @@ class ExtramemView extends DatarunpremiumView {
 	    	dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 	       	dc.drawText(120, 13, Graphics.FONT_MEDIUM, CFMValue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
     	    mColourFont = originalFontcolor;
-			dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
+	    	if (ID0 == 3801 or ID0 == 4026 ) {
+	    	   	dc.drawText(130, 14, Graphics.FONT_MEDIUM, CFMValue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+	    	} else if (ID0 == 3802 or ID0 == 4027 ) {
+	    	   	dc.drawText(140, 15, Graphics.FONT_MEDIUM, CFMValue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+	       	} else {
+		       	dc.drawText(120, 13, Graphics.FONT_MEDIUM, CFMValue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+    	    }
 		}
 	   }		
 	}
