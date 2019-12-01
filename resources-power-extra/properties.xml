@@ -37,6 +37,7 @@
     <property id="pClockFieldMetric" type="number">46</property>
     <property id="pFTP" type="number">250</property>
     <property id="pCP" type="number">250</property>
+    <property id="pGarminColors" type="boolean">false</property>
     <property id="pdisablelabel1" type="boolean">false</property>
     <property id="pdisablelabel2" type="boolean">false</property>
     <property id="pdisablelabel3" type="boolean">false</property>
@@ -53,7 +54,7 @@
     <string id="AppName">Datarun premium with 6 metrics, main version</string>
     -->
     <string id="AppVersion"></string>
-    <string id="lDummysetting4version">Version 2.20f of Datarun premium with 6 metrics, main version (dummy setting)</string>
+    <string id="lDummysetting4version">Version 2.21 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -178,6 +179,8 @@
     <string id="lpercFTP5s">Power averaged over 5 seconds in percentage of FTP</string>
     <string id="lpercFTP10s">Power averaged over 10 seconds in percentage of FTP</string>
     <string id="lpercFTPsec">Power averaged over .. seconds in percentage of FTP (depends on the value of power averaged over the last ... seconds [max is 300 seconds]</string>
+    <string id="lTemp">Current temperature</string>
+    <string id="lGarminColors">Use Garmin color scheme for label colors (not applicable for Palladino 10 powerzones)</string>
 	<string id="ldisablelabel1">Disable colored label for upper left metric</string>
 	<string id="ldisablelabel2">Disable colored label for upper right metric</string>
 	<string id="ldisablelabel3">Disable colored label for bottom left metric</string>
@@ -363,6 +366,7 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
       </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pUpperRightMetric" title="@Strings.lUpperRightMetric">
@@ -465,7 +469,9 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>      </settingConfig>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>      
+      </settingConfig>
     </setting>
 
     <setting propertyKey="@Properties.pMiddleLeftMetric" title="@Strings.lMiddleLeftMetric">
@@ -559,8 +565,9 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>      
-        </settingConfig>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>     
+        <listEntry value="89">@Strings.lTemp</listEntry> 
+      </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pMiddleRightMetric" title="@Strings.lMiddleRightMetric">
       <settingConfig type="list" required="true">
@@ -654,7 +661,8 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>      
+        <listEntry value="53">@Strings.lElevationLoss</listEntry> 
+        <listEntry value="89">@Strings.lTemp</listEntry>     
       </settingConfig>
     </setting>
     
@@ -758,7 +766,9 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>      </settingConfig>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
+      </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pBottomRightMetric" title="@Strings.lBottomRightMetric">
       <settingConfig type="list" required="true">
@@ -860,7 +870,9 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>       </settingConfig>
+        <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
+       </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pClockFieldMetric" title="@Strings.lClockFieldMetric">
       <settingConfig type="list" required="true">
@@ -911,6 +923,7 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="89">@Strings.lTemp</listEntry>
         
         <listEntry value="997">@Strings.lPIMenu</listEntry>
         <listEntry value="32">@Strings.lCEFactor</listEntry>
@@ -920,6 +933,10 @@
         <listEntry value="54">@Strings.lTEffect</listEntry>  
         <listEntry value="87">@Strings.lkCalories</listEntry>
       </settingConfig>
+    </setting>
+    
+    <setting propertyKey="@Properties.pGarminColors" title="@Strings.lGarminColors">
+      <settingConfig type="boolean" required="true" />
     </setting>
     <setting propertyKey="@Properties.pdisablelabel1" title="@Strings.ldisablelabel1">
       <settingConfig type="boolean" required="true" />
