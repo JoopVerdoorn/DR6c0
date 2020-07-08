@@ -38,8 +38,24 @@ class ExtramemView extends DatarunpremiumView {
 	var disablelabel6 						= false;
 	var maxHR								= 999;
 	var kCalories							= 0;
+	var mElapsedCadence   					= 0;
+	var mLastLapCadenceMarker      			= 0;    
+    var mCurrentCadence    					= 0; 
+    var mLastLapElapsedCadence				= 0;
+    var mCadenceTime						= 0;
+    var mLapTimerTimeCadence				= 0;    
+	var mLastLapTimeCadenceMarker			= 0;
+	var mLastLapTimerTimeCadence			= 0;
+	var currentCadence						= 0;
+	var LapCadence							= 0;
+	var LastLapCadence						= 0;
+	var AverageCadence 						= 0;
 	var tempeTemp 							= 0;
 	var utempunits							= false;
+	var valueAsclast						= 0;
+	var valueDesclast						= 0;
+	var Diff1 								= 0;
+	var Diff2 								= 0;
 	
     function initialize() {
         DatarunpremiumView.initialize();
@@ -79,6 +95,13 @@ class ExtramemView extends DatarunpremiumView {
 		}
 		dc.setColor(mColourBackGround, Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle (0, 0, 280, 280);
+       
+        //! Calculate lap (Cadence) time
+        mLapTimerTimeCadence 	= mCadenceTime - mLastLapTimeCadenceMarker;
+        var mLapElapsedCadence 	= mElapsedCadence - mLastLapCadenceMarker;
+		AverageCadence 			= Math.round((mCadenceTime != 0) ? mElapsedCadence/mCadenceTime : 0);  		
+		LapCadence 				= (mLapTimerTimeCadence != 0) ? Math.round(mLapElapsedCadence/mLapTimerTimeCadence) : 0; 					
+		LastLapCadence			= (mLastLapTimerTime != 0) ? Math.round(mLastLapElapsedCadence/mLastLapTimerTime) : 0;
        
 		//! Calculation of rolling average of pace
 		var info = Activity.getActivityInfo();
@@ -125,9 +148,13 @@ class ExtramemView extends DatarunpremiumView {
 		//! Calculate vertical speed
 		var valueDesc = (info.totalDescent != null) ? info.totalDescent : 0;
         valueDesc = (unitD == 1609.344) ? valueDesc*3.2808 : valueDesc;
+        Diff1 = valueDesc - valueDesclast;
 		var valueAsc = (info.totalAscent != null) ? info.totalAscent : 0;
         valueAsc = (unitD == 1609.344) ? valueAsc*3.2808 : valueAsc;
-        var CurrentVertSpeedinmpersec = valueAsc-valueDesc;
+        Diff2 = valueAsc - valueAsclast;
+        valueDesclast = valueDesc;
+        valueAsclast = valueAsc;
+        var CurrentVertSpeedinmpersec = Diff2-Diff1;
 		VertPace5 								= VertPace4;
 		VertPace4 								= VertPace3;
 		VertPace3 								= VertPace2;
@@ -188,7 +215,7 @@ class ExtramemView extends DatarunpremiumView {
             	fieldLabel[i] = "EL loss";
             	fieldFormat[i] = "0decimal";           	
         	}  else if (metric[i] == 61) {
-           		fieldValue[i] = (info.currentCadence != null) ? info.currentCadence/2 : 0;
+           		fieldValue[i] = (info.currentCadence != null) ? Math.round(info.currentCadence/2) : 0;
             	fieldLabel[i] = "RCadence";
             	fieldFormat[i] = "0decimal";           	
         	}  else if (metric[i] == 62) {
@@ -236,6 +263,18 @@ class ExtramemView extends DatarunpremiumView {
     	        fieldValue[i] = (utempunits == false) ? fieldValue[i] : fieldValue[i]*1.8+32;
         	    fieldLabel[i] = "Temp";
             	fieldFormat[i] = "1decimal";
+             } else if (metric[i] == 90) {
+    	        fieldValue[i] = LapCadence;
+        	    fieldLabel[i] = "Lap Cad";
+            	fieldFormat[i] = "0decimal";
+			} else if (metric[i] == 91) {
+    	        fieldValue[i] = LastLapCadence;
+        	    fieldLabel[i] = "LL Cad";
+            	fieldFormat[i] = "0decimal";
+			} else if (metric[i] == 92) {
+	            fieldValue[i] = AverageCadence;
+    	        fieldLabel[i] = "Avg Cad";
+        	    fieldFormat[i] = "0decimal";
             } else if (metric[i] == 105) {
 	            fieldValue[i] = tempeTemp;
 	            fieldValue[i] = (utempunits == false) ? fieldValue[i] : fieldValue[i]*1.8+32;
@@ -383,7 +422,7 @@ class ExtramemView extends DatarunpremiumView {
             	CFMLabel = "EL loss";
             	CFMFormat = "0decimal";           	
         	}  else if (uClockFieldMetric == 61) {
-           		CFMValue = (info.currentCadence != null) ? info.currentCadence/2 : 0;
+           		CFMValue = (info.currentCadence != null) ? Math.round(info.currentCadence/2) : 0;
             	CFMLabel = "RCadence";
             	CFMFormat = "0decimal";           	
         	}  else if (uClockFieldMetric == 62) {
@@ -448,6 +487,18 @@ class ExtramemView extends DatarunpremiumView {
 	            CFMValue = (utempunits == false) ? CFMValue : CFMValue*1.8+32;
     	        CFMLabel = "Tempe T";
         	    CFMFormat = "0decimal";
+        	} else if (uClockFieldMetric == 90) {
+    	        CFMValue = LapCadence;
+        	    CFMValue = "Lap Cad";
+            	CFMValue = "0decimal";
+			} else if (uClockFieldMetric == 91) {
+    	        CFMValue = LastLapCadence;
+        	    CFMValue = "LL Cad";
+            	CFMValue = "0decimal";
+			} else if (uClockFieldMetric == 92) {
+	            CFMValue = AverageCadence;
+    	        CFMValue = "Avg Cad";
+        	    CFMValue = "0decimal";
 			}
  
 

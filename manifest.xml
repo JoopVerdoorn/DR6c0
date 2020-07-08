@@ -27,6 +27,7 @@
             <iq:product id="marqcaptain"/>
             <iq:product id="marqdriver"/>
             <iq:product id="marqexpedition"/>
+            <iq:product id="marqadventurer"/>
         </iq:products>
         <iq:permissions>
             <iq:uses-permission id="UserProfile"/>
