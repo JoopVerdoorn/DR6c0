@@ -57,12 +57,13 @@
     <property id="pFTPHumid" type="number">70</property>
     <property id="pRealAltitude" type="number">200</property>
     <property id="pFTPAltitude" type="number">200</property>
+    <property id="pTempeCalibration" type="number">0</property>
   </properties>
 
 	
   <strings>
     <string id="AppName">Datarun premium with 6 metrics, main version</string>
-    <string id="AppVersion">2.28b</string>
+    <string id="AppVersion">2.28c</string>
     <string id="lDummysetting4version">Version 2.28 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
@@ -200,6 +201,7 @@
     <string id="lpercFTPsec">Power averaged over .. seconds in percentage of FTP (depends on the value of power averaged over the last ... seconds [max is 300 seconds]</string>
     <string id="lTemp">Current watch temperature</string>
 	<string id="lTempeTemp">Current Tempe temperature (requires Tempe!)</string>
+	<string id="lTempeCalibration">Calibration factor for Tempe temperature in tenths of degrees (3 means 0.3 added, -4 means 0.4 subtracted)</string>
 	<string id="ltempunits">Use Fahrenheit instead of Celsius for temperature metrics (Celsius is default)</string>
     <string id="lGarminColors">Use Garmin color scheme for label colors (not applicable for Palladino 10 powerzones)</string>
 	<string id="ldisablelabel1">Disable colored label for upper left metric</string>
@@ -266,6 +268,9 @@
     </setting>
     <setting propertyKey="@Properties.ptempunits" title="@Strings.ltempunits">
       <settingConfig type="boolean" required="true" />
+    </setting>
+    <setting propertyKey="@Properties.pTempeCalibration" title="@Strings.lTempeCalibration">
+      <settingConfig type="numeric"  required="true"/>
     </setting>
     <setting propertyKey="@Properties.pETAfromLap" title="@Strings.lETAfromLap">
       <settingConfig type="boolean" required="true" />

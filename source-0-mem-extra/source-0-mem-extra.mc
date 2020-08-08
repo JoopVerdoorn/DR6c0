@@ -56,6 +56,7 @@ class ExtramemView extends DatarunpremiumView {
 	var valueDesclast						= 0;
 	var Diff1 								= 0;
 	var Diff2 								= 0;
+	var utempcalibration					= 0;
 	
     function initialize() {
         DatarunpremiumView.initialize();
@@ -72,6 +73,7 @@ class ExtramemView extends DatarunpremiumView {
 		disablelabel4 						= mApp.getProperty("pdisablelabel4");
 		disablelabel5 						= mApp.getProperty("pdisablelabel5");
 		disablelabel6 						= mApp.getProperty("pdisablelabel6");
+		utempcalibration 					= mApp.getProperty("pTempeCalibration");
 	}
 
 
@@ -277,9 +279,9 @@ class ExtramemView extends DatarunpremiumView {
         	    fieldFormat[i] = "0decimal";
             } else if (metric[i] == 105) {
 	            fieldValue[i] = tempeTemp;
-	            fieldValue[i] = (utempunits == false) ? fieldValue[i] : fieldValue[i]*1.8+32;
+	            fieldValue[i] = (utempunits == false) ? fieldValue[i]+utempcalibration : fieldValue[i]*1.8+32+utempcalibration;
     	        fieldLabel[i] = "Tempe T";
-    	        fieldFormat[i] = "0decimal";
+    	        fieldFormat[i] = "1decimal";
 			} 
 		}
 
@@ -484,9 +486,9 @@ class ExtramemView extends DatarunpremiumView {
             	CFMFormat = "1decimal";
             } else if (uClockFieldMetric == 105) {
 	            CFMValue = tempeTemp;
-	            CFMValue = (utempunits == false) ? CFMValue : CFMValue*1.8+32;
+	            CFMValue = (utempunits == false) ? CFMValue+utempcalibration : CFMValue*1.8+32+utempcalibration;
     	        CFMLabel = "Tempe T";
-        	    CFMFormat = "0decimal";
+        	    CFMFormat = "1decimal";
         	} else if (uClockFieldMetric == 90) {
     	        CFMValue = LapCadence;
         	    CFMValue = "Lap Cad";
