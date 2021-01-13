@@ -1,6 +1,9 @@
 using Toybox.Application as App;
 
 class CiqView extends DatarunpremiumView {  
+    hidden var WorkoutStepLowBoundary		= 0;
+    hidden var WorkoutStepHighBoundary		= 999;
+    hidden var is32kBdevice					= true;
 
     function initialize() {
         DatarunpremiumView.initialize();
@@ -63,10 +66,9 @@ class CiqView extends DatarunpremiumView {
         yh = yh.toNumber();
         xl = xl.toNumber();
         yl = yl.toNumber();
-
-		var ycorrectionFenix6or6s = 0;
-
-        if ( counter == 5 or counter == 6 ) {
+        var ycorrectionFenix6or6s = 0;
+        
+        if ( counter == 6 or counter == 7 ) {
         	if ( ID0 == 3798 or ID0 == 4023 ) { //! Fenix 6s
         		ycorrectionFenix6or6s = 3;
         	} else if ( ID0 == 3800 or ID0 == 4025 ) { //! Fenix 6
@@ -74,12 +76,13 @@ class CiqView extends DatarunpremiumView {
         	}
         	y = y + ycorrectionFenix6or6s;
         }
+
         if ( fieldformat.equals("0decimal" ) == true ) {
         	fieldvalue = fieldvalue.format("%.0f");        	
         } else if ( fieldformat.equals("2decimal" ) == true ) {
             Temp = Math.round(fieldvalue*100)/100;
             var fString = "%.2f";
-            if (counter == 4) {
+            if (counter == 3 or counter == 4 or counter ==5) {
    	      		if (Temp > 9.99999) {
     	         	fString = "%.1f";
         	    }
@@ -109,7 +112,7 @@ class CiqView extends DatarunpremiumView {
     	dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     	
         if ( fieldformat.equals("time" ) == true ) {    
-	    	if ( counter == 1 or counter == 2 or counter == 3 or counter == 5 or counter == 6 ) {  
+	    	if ( counter == 1 or counter == 2 or counter == 6 or counter == 7 ) {  
 	    		var fTimerSecs = (fieldvalue % 60).format("%02d");
         		var fTimer = (fieldvalue / 60).format("%d") + ":" + fTimerSecs;  //! Format time as m:ss
 	    		var xx = x;
@@ -120,34 +123,20 @@ class CiqView extends DatarunpremiumView {
             		dc.drawText(xh, yh, Graphics.FONT_LARGE, fTimerHours, Graphics.TEXT_JUSTIFY_LEFT|Graphics.TEXT_JUSTIFY_VCENTER);
             		fTimer = (fieldvalue / 60 % 60).format("%02d") + ":" + fTimerSecs;  
         		}
-				if ( counter == 3) {
-       				dc.drawText(xx, y, Graphics.FONT_NUMBER_HOT, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       			} else {	
-       				if ( ID0 == 3798 or ID0 == 4023 or ID0 == 3800 or ID0 == 4025) { //! Fenix 6(s)
-        				dc.drawText(xx, y, Graphics.FONT_NUMBER_MILD, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        			} else {
-        				dc.drawText(xx, y, Graphics.FONT_NUMBER_MEDIUM, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        			}
-       			}
+        		if ( ID0 == 3798 or ID0 == 4023 or ID0 == 3800 or ID0 == 4025) { //! Fenix 6(s)
+        			dc.drawText(xx, y, Graphics.FONT_NUMBER_MILD, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        		} else {
+        			dc.drawText(xx, y, Graphics.FONT_NUMBER_MEDIUM, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        		}	
         	}
         } else {
- 			if ( counter == 3) {
-        		dc.drawText(x, y, Graphics.FONT_NUMBER_HOT, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        	if ( ID0 == 3798 or ID0 == 4023 or ID0 == 3800 or ID0 == 4025) { //! Fenix 6(s)
+        		dc.drawText(x, y, Graphics.FONT_NUMBER_MILD, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         	} else {
-        		if ( ID0 == 3798 or ID0 == 4023 or ID0 == 3800 or ID0 == 4025) { //! Fenix 6(s)
-	        		dc.drawText(x, y, Graphics.FONT_NUMBER_MILD, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-    	    	} else {
-        			dc.drawText(x, y, Graphics.FONT_NUMBER_MEDIUM, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        		}
-			}
+        		dc.drawText(x, y, Graphics.FONT_NUMBER_MEDIUM, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        	}
         }        
-        if ( counter != 3) {        
-       		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       	} else {
-       		dc.drawText(xl, yl-36, Graphics.FONT_XTINY,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       		dc.drawText(xl, yl-18, Graphics.FONT_XTINY,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       	}               
+        dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);               
         mColourFont = originalFontcolor;
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     }

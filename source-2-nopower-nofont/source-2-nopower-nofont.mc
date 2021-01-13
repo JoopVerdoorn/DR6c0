@@ -40,7 +40,7 @@ class PowerView extends CiqView {
 		var info = Activity.getActivityInfo();
 
         var i = 0; 
-	    for (i = 1; i < 7; ++i) {
+	    for (i = 1; i < 8; ++i) {
 	        if (metric[i] == 55) {   
             	if (info.currentSpeed == null or info.currentSpeed==0) {
             		fieldValue[i] = 0;
@@ -87,13 +87,15 @@ class PowerView extends CiqView {
 		   		} else if ( i == 2 ) {	//!upper row, right
 			   		Coloring2(dc,i,fieldValue[i],"120,029,100,019");
 		       	} else if ( i == 3 ) {  //!middle row, left
-	    			Coloring2(dc,i,fieldValue[i],"000,093,016,062");
-	      		} else if ( i == 4 ) {  //!middle row, right
-		    		Coloring2(dc,i,fieldValue[i],"165,093,077,019");
-			   	} else if ( i == 5 ) {	//!lower row, left
+	    			Coloring2(dc,i,fieldValue[i],"000,093,072,019");
+		   		} else if ( i == 4 ) {	//!middle row, middle
+			 		Coloring2(dc,i,fieldValue[i],"074,093,089,019");
+		      	} else if ( i == 5 ) {  //!middle row, right
+	    			Coloring2(dc,i,fieldValue[i],"165,093,077,019");
+		   		} else if ( i == 6 ) {	//!lower row, left
 			   		Coloring2(dc,i,fieldValue[i],"018,199,100,019");
-	      		} else if ( i == 6 ) {	//!lower row, right
-		    		Coloring2(dc,i,fieldValue[i],"120,199,100,019");
+		      	} else if ( i == 7 ) {	//!lower row, right
+	    			Coloring2(dc,i,fieldValue[i],"120,199,100,019");
 	    		}
 	    	}       	
 		}
@@ -121,19 +123,5 @@ class PowerView extends CiqView {
         	dc.fillRectangle(x, y, w, h);
         }
 	}
-
-	function LapactionNoPower () {
-        var info = Activity.getActivityInfo();
-        mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
-        mLastLapElapsedDistance 	= (info.elapsedDistance != null) ? info.elapsedDistance - mLastLapDistMarker : 0;
-        mLastLapDistMarker      	= (info.elapsedDistance != null) ? info.elapsedDistance : 0;
-        mLastLapTimeMarker      	= jTimertime;
-
-        mLastLapTimerTimeHR			= mHeartrateTime - mLastLapTimeHRMarker;
-        mLastLapElapsedHeartrate 	= (info.currentHeartRate != null) ? mElapsedHeartrate - mLastLapHeartrateMarker : 0;
-        mLastLapHeartrateMarker     = mElapsedHeartrate;
-        mLastLapTimeHRMarker        = mHeartrateTime;
-        mLaps++;
-    }
 
 }

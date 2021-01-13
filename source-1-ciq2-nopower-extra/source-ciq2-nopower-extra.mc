@@ -68,7 +68,7 @@ class CiqView extends ExtramemView {
         } else if ( fieldformat.equals("2decimal" ) == true ) {
             Temp = Math.round(fieldvalue*100)/100;
             var fString = "%.2f";
-            if (counter == 4) {
+            if (counter == 3 or counter == 4 or counter ==5) {
    	      		if (Temp > 9.99999) {
     	         	fString = "%.1f";
         	    }
@@ -90,7 +90,7 @@ class CiqView extends ExtramemView {
         		
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
         if ( fieldformat.equals("time" ) == true ) {    
-	    	if ( counter == 1 or counter == 2 or counter == 3 or counter == 5 or counter == 6 ) {  
+	    	if ( counter == 1 or counter == 2 or counter == 6 or counter == 7 ) {  
 	    		var fTimerSecs = (fieldvalue % 60).format("%02d");
         		var fTimer = (fieldvalue / 60).format("%d") + ":" + fTimerSecs;  //! Format time as m:ss
 	    		var xx = x;
@@ -104,23 +104,13 @@ class CiqView extends ExtramemView {
        			dc.drawText(xx, y, Garminfont, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         	}
         } else {
- 			if ( counter == 3) {
-        		dc.drawText(x, y, Graphics.FONT_NUMBER_HOT, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-        	} else {
-        		dc.drawText(x, y, Garminfont, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-			}
+       		dc.drawText(x, y, Garminfont, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         }        
-        if ( counter != 3) {        
-       		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       	} else {
-       		dc.drawText(xl, yl-36, Graphics.FONT_XTINY,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       		dc.drawText(xl, yl-18, Graphics.FONT_XTINY,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       	}
+       	dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
         mColourFont = originalFontcolor;
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     }
-
+	
 	function LapactionNoPower () {
         var info = Activity.getActivityInfo();
         mLastLapTimerTime       	= jTimertime - mLastLapTimeMarker;
@@ -133,11 +123,11 @@ class CiqView extends ExtramemView {
         mLastLapHeartrateMarker     = mElapsedHeartrate;
         mLastLapTimeHRMarker        = mHeartrateTime;
         mLaps++;
-
+        
         mLastLapTimerTimeCadence	= mHeartrateTime - mLastLapTimeCadenceMarker;
         mLastLapElapsedCadence 		= (info.currentCadence != null) ? mElapsedCadence - mLastLapCadenceMarker : 0;
         mLastLapCadenceMarker     	= mElapsedCadence;
         mLastLapTimeCadenceMarker   = mCadenceTime;
     }
-	
+
 }
