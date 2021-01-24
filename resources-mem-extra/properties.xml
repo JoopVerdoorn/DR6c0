@@ -6,10 +6,9 @@
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>
     <property id="pMiddleLeftMetric" type="number">45</property>    
-    <property id="pMiddleMiddleMetric" type="number">8</property>
     <property id="pMiddleRightMetric" type="number">50</property>    
     <property id="pBottomLeftMetric" type="number">46</property>
-    <property id="pBottomRightMetric" type="number">31</property>
+    <property id="pBottomRightMetric" type="number">32</property>
     <property id="pMilClockAltern" type="number">0</property>
     <property id="pRacedistance" type="number">42195</property>
     <property id="pRacetime" type="string">03:59:48</property>
@@ -30,17 +29,15 @@
     <property id="pdisablelabel4" type="boolean">false</property>
     <property id="pdisablelabel5" type="boolean">false</property>
     <property id="pdisablelabel6" type="boolean">false</property>
-    <property id="pdisablelabel7" type="boolean">false</property>
     <property id="ptempunits" type="boolean">false</property>
     <property id="pTempeCalibration" type="number">0</property>
-    
   </properties>
 
 	
   <strings>
-    <string id="AppName">Datarun premium with 7 metrics, main version</string>
-    <string id="AppVersion">2.30f</string>
-    <string id="lDummysetting4version">Version 2.30f of Datarun premium with 7 metrics, main version (dummy setting)</string>
+    <string id="AppName">Datarun premium with 6 metrics, main version</string>
+    <string id="AppVersion">2.30</string>
+    <string id="lDummysetting4version">Version 2.30 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -64,7 +61,6 @@
     <string id="lUpperLeftMetric">Upper left field</string>
     <string id="lUpperRightMetric">Upper right field</string>
     <string id="lMiddleLeftMetric">Middle left field</string>    
-    <string id="lMiddleMiddleMetric">Middle middle field</string>
     <string id="lMiddleRightMetric">Middle right field</string> 
     <string id="lBottomLeftMetric">Bottom left field</string>
     <string id="lBottomRightMetric">Bottom right field</string>
@@ -97,7 +93,7 @@
 	<string id="lPaceper3km">Pace averaged over the last 3 seconds</string>
 	<string id="lPaceper5km">Pace averaged over the last 5 seconds</string>
 	<string id="lCurrentSpeed">Speed in km/mile per hour</string>
-	<string id="lAverage5secSpeed">Speed averaged over the last 5 seconds in km/mile per hour (only for FR645m, Fenix 5x, Fenix 5 plus series and D2 Charlie/Delta)</string>	
+	<string id="lAverage5secSpeed">Speed averaged over the last 5 seconds in km/mile per hour</string>	
 	<string id="lLapSpeed">Lap speed in km/mile per hour</string>
 	<string id="lLLSpeed">Last lap speed in km/mile per hour</string>
 	<string id="lAverageSpeed">Average speed in km/mile per hour</string>
@@ -131,13 +127,17 @@
 	<string id="lCEFactor">Current efficiency factor</string>
 	<string id="lLEFactor">Current lap efficiency factor</string>
 	<string id="lLLEFactor">Last lap average efficiency factor</string>
+	<string id="lTemp">Current watch temperature</string>
+	<string id="lTempeTemp">Current Tempe temperature (requires Tempe!)</string>
+	<string id="lTempeCalibration">Calibration factor for Tempe temperature in tenths of degrees (3 means 0.3 added, -4 means 0.4 subtracted)</string>
+	<string id="ltempunits">Use Fahrenheit instead of Celsius for temperature metrics (Celsius is default)</string>
+	<string id="lGarminColors">Use Garmin color scheme for label colors (not applicable for Palladino 10 powerzones)</string>
 	<string id="ldisablelabel1">Disable colored label for upper left metric</string>
 	<string id="ldisablelabel2">Disable colored label for upper right metric</string>
-	<string id="ldisablelabel3">Disable colored label for middle left metric</string>
-	<string id="ldisablelabel4">Disable colored label for middle middle metric</string>
-	<string id="ldisablelabel5">Disable colored label for middle right metric</string>
-	<string id="ldisablelabel6">Disable colored label for bottom left metric</string>
-	<string id="ldisablelabel7">Disable colored label for bottom right metric</string>
+	<string id="ldisablelabel3">Disable colored label for bottom left metric</string>
+	<string id="ldisablelabel4">Disable colored label for bottom right metric</string>
+	<string id="ldisablelabel5">Disable colored label for bottom left metric</string>
+	<string id="ldisablelabel6">Disable colored label for bottom right metric</string>
 	<string id="ldistanceToNextPoint">Distance to next point</string>
 	<string id="ldistanceToDestination">Distance to destination</string>
 	<string id="lpercMaxHR">Current HR in percentage of MaxHR</string>
@@ -146,12 +146,7 @@
     <string id="lApercMaxHR">Average HR in percentage of MaxHR</string>	
     <string id="lkCalories">Used kilocalories</string>
     <string id="lLLPaceper100m">Pace of last lap in seconds per 100 meter (for track running)</string>
-    <string id="lTemp">Current watch temperature</string>
-	<string id="lTempeTemp">Current Tempe temperature (requires Tempe!)</string>
-	<string id="lTempeCalibration">Calibration factor for Tempe temperature in tenths of degrees (3 means 0.3 added, -4 means 0.4 subtracted)</string>
-	<string id="ltempunits">Use Fahrenheit instead of Celsius for temperature metrics (Celsius is default)</string>
-	<string id="lGarminColors">Use Garmin color scheme for label colors (not applicable for Palladino 10 powerzones)</string>
-	<string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
+    <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
  </strings>
 
   <settings>
@@ -302,7 +297,7 @@
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
-        
+
         <listEntry value="994">@Strings.lSpeedMenu</listEntry>
         <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
         <listEntry value="62">@Strings.lAverage3secSpeed</listEntry>
@@ -323,7 +318,7 @@
         <listEntry value="13">@Strings.lETArequiredpace</listEntry>
         <listEntry value="14">@Strings.lETA</listEntry>
         <listEntry value="15">@Strings.lETAdeviation</listEntry>
-        
+                
         <listEntry value="995">@Strings.lHRMenu</listEntry>
         <listEntry value="45">@Strings.lHeartrate</listEntry>
         <listEntry value="46">@Strings.lHeartrateZone</listEntry>
@@ -420,74 +415,6 @@
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         </settingConfig>
     </setting>
-    <setting propertyKey="@Properties.pMiddleMiddleMetric" title="@Strings.lMiddleMiddleMetric">
-      <settingConfig type="list" required="true">
-        <listEntry value="991">@Strings.lDistanceMenu</listEntry>
-        <listEntry value="4">@Strings.lDistDistance</listEntry>
-        <listEntry value="5">@Strings.lDistLap</listEntry>
-        <listEntry value="6">@Strings.lDistLastLap</listEntry>
-        <listEntry value="7">@Strings.lAvgLapD</listEntry>
-        <listEntry value="81">@Strings.ldistanceToNextPoint</listEntry>
-        <listEntry value="82">@Strings.ldistanceToDestination</listEntry>
-        
-        <listEntry value="992">@Strings.lPaceMenu</listEntry>
-        <listEntry value="8">@Strings.lCurrentPace</listEntry>
-        <listEntry value="55">@Strings.lPaceper100m</listEntry>
-        <listEntry value="88">@Strings.lLLPaceper100m</listEntry>
-        <listEntry value="16">@Strings.lPaceper3km</listEntry>        
-        <listEntry value="9">@Strings.lPaceper5km</listEntry>
-        <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
-        <listEntry value="10">@Strings.lLapPace</listEntry>
-        <listEntry value="11">@Strings.lLastLapPace</listEntry>
-        <listEntry value="12">@Strings.lAvgPace</listEntry>
-
-		<listEntry value="994">@Strings.lSpeedMenu</listEntry>
-        <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
-        <listEntry value="62">@Strings.lAverage3secSpeed</listEntry>
-        <listEntry value="41">@Strings.lAverage5secSpeed</listEntry>
-        <listEntry value="63">@Strings.lAverage30secSpeed</listEntry>
-        <listEntry value="42">@Strings.lLapSpeed</listEntry>
-        <listEntry value="43">@Strings.lLLSpeed</listEntry>
-        <listEntry value="44">@Strings.lAverageSpeed</listEntry>
-
-        <listEntry value="999">@Strings.lCadenceMenu</listEntry>
-        <listEntry value="50">@Strings.lCadence</listEntry>
-        <listEntry value="61">@Strings.lRCadence</listEntry>
-        <listEntry value="90">@Strings.lLapCadence</listEntry>
-        <listEntry value="91">@Strings.lLLCadence</listEntry>
-        <listEntry value="92">@Strings.lAveraCadence</listEntry>
-        
-        <listEntry value="993">@Strings.lETAMenu</listEntry>
-        <listEntry value="13">@Strings.lETArequiredpace</listEntry>
-        
-        <listEntry value="995">@Strings.lHRMenu</listEntry>
-        <listEntry value="45">@Strings.lHeartrate</listEntry>
-        <listEntry value="46">@Strings.lHeartrateZone</listEntry>
-        <listEntry value="47">@Strings.lLapHeartrate</listEntry>
-        <listEntry value="48">@Strings.lLLHeartrate</listEntry>
-        <listEntry value="49">@Strings.lAveraHeartrate</listEntry>
-        <listEntry value="83">@Strings.lpercMaxHR</listEntry>
-        <listEntry value="84">@Strings.lLpercMaxHR</listEntry>
-        <listEntry value="85">@Strings.lLLpercMaxHR</listEntry>
-        <listEntry value="86">@Strings.lApercMaxHR</listEntry>
-                
-        <listEntry value="997">@Strings.lPIMenu</listEntry>
-        <listEntry value="32">@Strings.lCEFactor</listEntry>
-        <listEntry value="30">@Strings.lAEFactor</listEntry>
-        <listEntry value="28">@Strings.lLEFactor</listEntry>
-        <listEntry value="29">@Strings.lLLEFactor</listEntry>
-        <listEntry value="54">@Strings.lTEffect</listEntry>
-        <listEntry value="87">@Strings.lkCalories</listEntry>
-
-        <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
-        <listEntry value="51">@Strings.lAltitude</listEntry>
-        <listEntry value="52">@Strings.lElevationGain</listEntry>
-        <listEntry value="53">@Strings.lElevationLoss</listEntry>
-        <listEntry value="89">@Strings.lTemp</listEntry>
-        <listEntry value="105">@Strings.lTempeTemp</listEntry>
-      </settingConfig>
-    </setting>
     <setting propertyKey="@Properties.pMiddleRightMetric" title="@Strings.lMiddleRightMetric">
       <settingConfig type="list" required="true">
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
@@ -528,7 +455,7 @@
         
         <listEntry value="993">@Strings.lETAMenu</listEntry>
         <listEntry value="13">@Strings.lETArequiredpace</listEntry>
-        
+
         <listEntry value="995">@Strings.lHRMenu</listEntry>
         <listEntry value="45">@Strings.lHeartrate</listEntry>
         <listEntry value="46">@Strings.lHeartrateZone</listEntry>
@@ -584,7 +511,7 @@
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
-        
+
         <listEntry value="994">@Strings.lSpeedMenu</listEntry>
         <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
         <listEntry value="62">@Strings.lAverage3secSpeed</listEntry>
@@ -605,7 +532,7 @@
         <listEntry value="13">@Strings.lETArequiredpace</listEntry>
         <listEntry value="14">@Strings.lETA</listEntry>
         <listEntry value="15">@Strings.lETAdeviation</listEntry>
-        
+                
         <listEntry value="995">@Strings.lHRMenu</listEntry>
         <listEntry value="45">@Strings.lHeartrate</listEntry>
         <listEntry value="46">@Strings.lHeartrateZone</listEntry>
@@ -660,7 +587,7 @@
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
-        
+
         <listEntry value="994">@Strings.lSpeedMenu</listEntry>
         <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
         <listEntry value="62">@Strings.lAverage3secSpeed</listEntry>
@@ -681,7 +608,7 @@
         <listEntry value="13">@Strings.lETArequiredpace</listEntry>
         <listEntry value="14">@Strings.lETA</listEntry>
         <listEntry value="15">@Strings.lETAdeviation</listEntry>
-        
+                
         <listEntry value="995">@Strings.lHRMenu</listEntry>
         <listEntry value="45">@Strings.lHeartrate</listEntry>
         <listEntry value="46">@Strings.lHeartrateZone</listEntry>
@@ -775,6 +702,7 @@
         <listEntry value="87">@Strings.lkCalories</listEntry>
       </settingConfig>
     </setting>
+    
     <setting propertyKey="@Properties.pGarminColors" title="@Strings.lGarminColors">
       <settingConfig type="boolean" required="true" />
     </setting>
@@ -790,13 +718,10 @@
   	<setting propertyKey="@Properties.pdisablelabel4" title="@Strings.ldisablelabel4">
       <settingConfig type="boolean" required="true" />
     </setting>
-  	<setting propertyKey="@Properties.pdisablelabel5" title="@Strings.ldisablelabel5">
+    <setting propertyKey="@Properties.pdisablelabel5" title="@Strings.ldisablelabel5">
       <settingConfig type="boolean" required="true" />
     </setting>
-    <setting propertyKey="@Properties.pdisablelabel6" title="@Strings.ldisablelabel6">
-      <settingConfig type="boolean" required="true" />
-    </setting>
-  	<setting propertyKey="@Properties.pdisablelabel7" title="@Strings.ldisablelabel7">
+  	<setting propertyKey="@Properties.pdisablelabel6" title="@Strings.ldisablelabel6">
       <settingConfig type="boolean" required="true" />
     </setting>
   </settings>

@@ -37,8 +37,7 @@ class DeviceView extends PowerView {
         //! Top vertical divider
         dc.drawLine(139, 34,  139, 107);
 
-        //! Centre vertical dividers
-        dc.drawLine(85,  107,  85,  182);
+        //! Centre vertical divider
         dc.drawLine(191, 107,  191, 182);
 
         //! Bottom vertical divider
@@ -46,7 +45,6 @@ class DeviceView extends PowerView {
         
         //! Bottom horizontal divider
         dc.drawLine(62, 256, 218, 256);
-
 
 		//! Display metrics
         dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
@@ -60,21 +58,26 @@ class DeviceView extends PowerView {
 
 		for (var i = 1; i < 7; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
-				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"081,079,085,015,089,085,043");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"081,079,085,015,089,085,043");
 			} else if ( i == 2 ) {	//!upper row, right
 				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"198,079,210,142,089,195,043");
-			} else if ( i == 3 ) {  //!middle row, left	
-				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"042,153,000,000,000,042,117");
-			} else if ( i == 4 ) {	//!middle row, middle
-				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"138,153,000,000,000,138,117");
-			} else if ( i == 5 ) {  //!middle row, right	
+	       	} else if ( i == 3 ) {  //!middle row, left
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"106,145,118,029,163,009,163");
+	       	} else if ( i == 4 ) {  //!middle row, right
 				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"236,153,000,000,000,235,117");
-			} else if ( i == 6 ) {	//!lower row, left
+			} else if ( i == 5 ) {	//!lower row, left
 				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"082,207,085,018,198,093,244");
-			} else if ( i == 7 ) {	//!lower row, right
+			} else if ( i == 6 ) {	//!lower row, right
 				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"198,207,210,142,217,183,244");
-       		}       	
+	       	}      	
 		}
+		
+//!		if (jTimertime == 0) {
+//!	    	if (ID0 != 3624 and ID0 != 3588 and ID0 != 3762 and ID0 != 3761 and ID0 != 3757 and ID0 != 3758 and ID0 != 3759) {
+//!		    	dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+//!				dc.drawText(120, 160, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
+//!		    }
+//!		}
 		
 		//! Bottom battery indicator
 	 	var stats = Sys.getSystemStats();
@@ -92,9 +95,9 @@ class DeviceView extends PowerView {
 	   } else {
 	   //! Display demo screen
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
-
+	
 		if (licenseOK == true) {
-      		dc.drawText(140, 40, Graphics.FONT_XTINY, "DR7c0", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+      		dc.drawText(140, 40, Graphics.FONT_XTINY, "DR6c0", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(140, 120, Graphics.FONT_TINY, "Registered !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(81, 160, Graphics.FONT_XTINY, "License code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(180, 160, Graphics.FONT_MEDIUM, mtest, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);

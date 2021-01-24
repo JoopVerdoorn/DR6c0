@@ -106,10 +106,9 @@ class DatarunpremiumView extends Ui.DataField {
          metric[1]    	= mApp.getProperty("pUpperLeftMetric");
          metric[2]   	= mApp.getProperty("pUpperRightMetric");
     	 metric[3]   	= mApp.getProperty("pMiddleLeftMetric");
-    	 metric[4] 		= mApp.getProperty("pMiddleMiddleMetric");    
-    	 metric[5]		= mApp.getProperty("pMiddleRightMetric");
-         metric[6]   	= mApp.getProperty("pBottomLeftMetric");
-         metric[7]  	= mApp.getProperty("pBottomRightMetric");      
+    	 metric[4] 		= mApp.getProperty("pMiddleRightMetric");    
+    	 metric[5]		= mApp.getProperty("pBottomLeftMetric");
+         metric[6]   	= mApp.getProperty("pBottomRightMetric");     
          uRoundedPace        = mApp.getProperty("pRoundedPace");
          uBacklight          = mApp.getProperty("pBacklight");
          umyNumber			 = mApp.getProperty("myNumber");
@@ -139,11 +138,10 @@ class DatarunpremiumView extends Ui.DataField {
 		mtest = ((ID2-329)*315127 + ID1-1864) % 74539;
 		mtest = (mtest < 1000) ? mtest + 80000 : mtest;
         
-		CCode = hashfunction(umyNumber.toString())+548831;                
-		CCode = CCode*hashfunction((uHrZones[2]*uHrZones[4]+uHrZones[1]+uHrZones[3]).toString())-4785;
+		CCode = hashfunction(umyNumber.toString())+649857;                
+		CCode = CCode*hashfunction((uHrZones[2]*uHrZones[4]+uHrZones[1]+uHrZones[3]).toString())-4934;
         CCode = (CCode > 0) ? CCode : -CCode; 
-        CCode = CCode % 346898 + 54215;   
-        licenseOK = (umyNumber == mtest) ? true : false;
+		CCode = CCode % 318948 + 54831;
     }
 
     //! Timer transitions from stopped to running state

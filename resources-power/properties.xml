@@ -4,7 +4,6 @@
     <property id="pUpperLeftMetric" type="number">0</property>
     <property id="pUpperRightMetric" type="number">4</property>
     <property id="pMiddleLeftMetric" type="number">45</property>    
-    <property id="pMiddleMiddleMetric" type="number">8</property>
     <property id="pMiddleRightMetric" type="number">50</property>    
     <property id="pBottomLeftMetric" type="number">20</property>
     <property id="pBottomRightMetric" type="number">22</property>
@@ -19,16 +18,15 @@
     <property id="pRequiredPower" type="string">000:999</property>
     <property id="pWarningFreq" type="number">5</property>
     <property id="pAlertbeep" type="boolean">false</property>
-    <property id="pETAfromLap" type="boolean">true</property>
     <property id="pLapPwr4alerts" type="boolean">false</property>
-    
+    <property id="pETAfromLap" type="boolean">true</property>
   </properties>
 
 	
   <strings>
-    <string id="AppName">Datarun premium with 7 metrics, main version</string>
-    <string id="AppVersion">2.30f</string>
-    <string id="lDummysetting4version">Version 2.30f of Datarun premium with 7 metrics, main version (dummy setting)</string>
+    <string id="AppName">Datarun premium with 6 metrics, main version</string>
+    <string id="AppVersion">2.30</string>
+    <string id="lDummysetting4version">Version 2.30 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -51,7 +49,6 @@
     <string id="lUpperLeftMetric">Upper left field</string>
     <string id="lUpperRightMetric">Upper right field</string>
     <string id="lMiddleLeftMetric">Middle left field</string>    
-    <string id="lMiddleMiddleMetric">Middle middle field</string>
     <string id="lMiddleRightMetric">Middle right field</string> 
     <string id="lBottomLeftMetric">Bottom left field</string>
     <string id="lBottomRightMetric">Bottom right field</string>
@@ -112,7 +109,7 @@
     </setting>
     <setting propertyKey="@Properties.myNumber" title="@Strings.MyNumberTitle">
         <settingConfig type="numeric" errorMessage="@Strings.MyNumberError" />
-    </setting>     
+    </setting>  
     <setting propertyKey="@Properties.pRoundedPace" title="@Strings.lRoundedPace">
       <settingConfig type="boolean" required="true" />
     </setting>
@@ -285,50 +282,6 @@
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
         <listEntry value="51">@Strings.lAltitude</listEntry>
         </settingConfig>
-    </setting>
-    <setting propertyKey="@Properties.pMiddleMiddleMetric" title="@Strings.lMiddleMiddleMetric">
-      <settingConfig type="list" required="true">
-        <listEntry value="991">@Strings.lDistanceMenu</listEntry>
-        <listEntry value="4">@Strings.lDistDistance</listEntry>
-        <listEntry value="5">@Strings.lDistLap</listEntry>
-        <listEntry value="6">@Strings.lDistLastLap</listEntry>
-        <listEntry value="7">@Strings.lAvgLapD</listEntry>
-        
-        <listEntry value="992">@Strings.lPaceMenu</listEntry>
-        <listEntry value="8">@Strings.lCurrentPace</listEntry>
-        <listEntry value="16">@Strings.lPaceper3km</listEntry>        
-        <listEntry value="9">@Strings.lPaceper5km</listEntry>
-        <listEntry value="10">@Strings.lLapPace</listEntry>
-        <listEntry value="11">@Strings.lLastLapPace</listEntry>
-        <listEntry value="12">@Strings.lAvgPace</listEntry>
-        <listEntry value="50">@Strings.lCadence</listEntry>
-        
-        <listEntry value="993">@Strings.lETAMenu</listEntry>
-        <listEntry value="13">@Strings.lETArequiredpace</listEntry>
-
-        <listEntry value="994">@Strings.lSpeedMenu</listEntry>
-        <listEntry value="40">@Strings.lCurrentSpeed</listEntry>
-        <listEntry value="41">@Strings.lAverage5secSpeed</listEntry>
-        <listEntry value="42">@Strings.lLapSpeed</listEntry>
-        <listEntry value="43">@Strings.lLLSpeed</listEntry>
-        <listEntry value="44">@Strings.lAverageSpeed</listEntry>
-        
-        <listEntry value="995">@Strings.lHRMenu</listEntry>
-        <listEntry value="45">@Strings.lHeartrate</listEntry>
-        <listEntry value="47">@Strings.lLapHeartrate</listEntry>
-        <listEntry value="48">@Strings.lLLHeartrate</listEntry>
-        <listEntry value="49">@Strings.lAveraHeartrate</listEntry>
-                
-        <listEntry value="996">@Strings.lSPowerMenu</listEntry>
-        <listEntry value="20">@Strings.lSPower</listEntry>
-        <listEntry value="21">@Strings.lAsecPower</listEntry>
-        <listEntry value="22">@Strings.lLPower</listEntry>
-        <listEntry value="23">@Strings.lLLPower</listEntry>
-        <listEntry value="24">@Strings.lAPower</listEntry>
-        
-        <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
-        <listEntry value="51">@Strings.lAltitude</listEntry>
-      </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pMiddleRightMetric" title="@Strings.lMiddleRightMetric">
       <settingConfig type="list" required="true">

@@ -38,8 +38,7 @@ class DeviceView extends PowerView {
         //! Top vertical divider
         dc.drawLine(109, 28,  109, 84);
 
-        //! Centre vertical dividers
-        dc.drawLine(66,  84,  66,  142);
+        //! Centre vertical divider
         dc.drawLine(149, 84,  149, 142);
 
         //! Bottom vertical divider
@@ -61,18 +60,16 @@ class DeviceView extends PowerView {
 	       	} else if ( i == 2 ) {	//!upper row, right
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"154,063,163,114,067,152,036");
 	       	} else if ( i == 3 ) {  //!middle row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"031,121,000,000,000,033,092");
-	       	} else if ( i == 4 ) {	//!middle row, middle
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"107,121,000,000,000,109,092");
-	       	} else if ( i == 5 ) {  //!middle row, right
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"082,113,090,018,124,011,130");
+	       	} else if ( i == 4 ) {  //!middle row, right
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"183,121,000,000,000,183,092");
-	       	} else if ( i == 6 ) {	//!lower row, left
+	       	} else if ( i == 5 ) {	//!lower row, left
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"063,163,065,015,157,073,191");
-	       	} else if ( i == 7 ) {	//!lower row, right
+	       	} else if ( i == 6 ) {	//!lower row, right
 	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"150,163,161,112,167,140,191");
-       		}       	
+       		}        	
 		}
- 
+
 		if (jTimertime == 0) {
 	    	if (ID0 != 3624 and ID0 != 3588 and ID0 != 3762 and ID0 != 3761 and ID0 != 3757 and ID0 != 3758 and ID0 != 3759) {
 		    	dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
@@ -98,12 +95,12 @@ class DeviceView extends PowerView {
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 	
 		if (licenseOK == true) {
-      		dc.drawText(109, 36, Graphics.FONT_XTINY, "DR7c0", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+      		dc.drawText(109, 36, Graphics.FONT_XTINY, "DR6c0", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(109, 109, Graphics.FONT_TINY, "Registered !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(74, 145, Graphics.FONT_XTINY, "License code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(164, 145, Graphics.FONT_XTINY, mtest, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-			dc.drawText(81, 170, Graphics.FONT_XTINY, "C-Code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-			dc.drawText(140, 170, Graphics.FONT_XTINY, CCode, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+			dc.drawText(81, 190, Graphics.FONT_XTINY, "C-Code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+			dc.drawText(160, 190, Graphics.FONT_XTINY, CCode, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 		} else {
       		dc.drawText(109, 30, Graphics.FONT_XTINY, "License needed !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
       		dc.drawText(109, 57, Graphics.FONT_XTINY, "Run is recorded though", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);

@@ -141,7 +141,7 @@ class PowerView extends CiqView {
 		  }	 
 		}		
 		var i = 0; 
-	    for (i = 1; i < 8; ++i) {	    
+	    for (i = 1; i < 7; ++i) {	    
         	if (metric[i] == 20) {
             	fieldValue[i] = (info.currentPower != null) ? runPower : 0;
             	fieldLabel[i] = "Power";
