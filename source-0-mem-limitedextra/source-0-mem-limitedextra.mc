@@ -97,27 +97,7 @@ class ExtramemView extends DatarunpremiumView {
 	            fieldValue[i] = (info.currentHeartRate != null) ? info.currentHeartRate : 0;
     	        fieldLabel[i] = "HR zone";
         	    fieldFormat[i] = "1decimal";      
-        	} else if (metric[i] == 28) {
-    	        fieldValue[i] = (LapHeartrate != 0) ? mLapSpeed*60/LapHeartrate : 0;
-        	    fieldLabel[i] = "Lap EF";
-            	fieldFormat[i] = "2decimal";
-			} else if (metric[i] == 29) {
-    	        fieldValue[i] = (LastLapHeartrate != 0) ? mLastLapSpeed*60/LastLapHeartrate : 0;
-        	    fieldLabel[i] = "LL EF";
-            	fieldFormat[i] = "2decimal";
-			} else if (metric[i] == 30) {
-	            fieldValue[i] = (info.averageSpeed != null && AverageHeartrate != 0) ? info.averageSpeed*60/AverageHeartrate : 0;
-    	        fieldLabel[i] = "Avg EF";
-        	    fieldFormat[i] = "2decimal";
-			} else if (metric[i] == 32) {
-	            fieldValue[i] = (info.currentHeartRate != null && info.currentHeartRate != 0) ? mLapSpeed*60/info.currentHeartRate : 0;
-    	        fieldLabel[i] = "Cur EF";
-        	    fieldFormat[i] = "2decimal";  	    
-        	} else if (metric[i] == 54) {
-    	        fieldValue[i] = (info.trainingEffect != null) ? info.trainingEffect : 0;
-        	    fieldLabel[i] = "T effect";
-            	fieldFormat[i] = "2decimal";           	         	         	
-			} else if (metric[i] == 52) {
+        	} else if (metric[i] == 52) {
            		fieldValue[i] = valueAsc;
             	fieldLabel[i] = "EL gain";
             	fieldFormat[i] = "0decimal";
@@ -157,10 +137,6 @@ class ExtramemView extends DatarunpremiumView {
             	}
             	fieldLabel[i] = "LL s/100m";
         	    fieldFormat[i] = "1decimal";
-	        } else if (metric[i] == 87) {
-    	        fieldValue[i] = (info.calories != null) ? info.calories : 0;
-        	    fieldLabel[i] = "kCal";
-            	fieldFormat[i] = "0decimal";
             } else if (metric[i] == 89) {
     	        fieldValue[i] = (sensorIter != null) ? sensorIter.next().data : 0;
     	        fieldValue[i] = (utempunits == false) ? fieldValue[i] : fieldValue[i]*1.8+32;

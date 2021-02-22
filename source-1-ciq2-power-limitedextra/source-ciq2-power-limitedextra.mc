@@ -28,6 +28,10 @@ class CiqView extends ExtramemView {
     hidden var WorkoutStepHighBoundary		= 999;
     hidden var is32kBdevice					= false;
     var AveragePower						= 0;
+    var WorkoutStepNr						= 0;
+    var WorkoutStepDuration 				= 0; 
+    var StartTimeNewStep 					= 0;
+    var RemainingWorkoutTime  				= 0;
 
             		            				
     function initialize() {
@@ -53,7 +57,8 @@ class CiqView extends ExtramemView {
 		for (i = 1; i < 11; ++i) {
 			Power[i] = 0;
 		}
-		Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);		
+		Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);	
+		WorkoutStepNr = 0;	
     }
 
 
@@ -202,7 +207,13 @@ class CiqView extends ExtramemView {
 	//! Store last lap quantities and set lap markers after a step within a structured workout
 	function onWorkoutStepComplete() {
 		Lapaction ();
+		++WorkoutStepNr;
 	}
+	
+	function onWorkoutStarted() {
+        WorkoutStepNr = 1;
+        StartTimeNewStep = jTimertime;
+    }
 
 	function onUpdate(dc) {
 		//! call the parent onUpdate to do the base logic
@@ -245,6 +256,8 @@ class CiqView extends ExtramemView {
 			WorkoutStepHighBoundary = (workoutTarget != null) ? (workoutTarget.step.targetValueHigh.toNumber() - 1000) : 999;
 			WorkoutStepLowBoundary = (uOnlyPwrCorrFactor == false) ? WorkoutStepLowBoundary : WorkoutStepLowBoundary/PwrCorrFactor;
 			WorkoutStepHighBoundary = (uOnlyPwrCorrFactor == false) ? WorkoutStepHighBoundary : WorkoutStepHighBoundary/PwrCorrFactor;
+			WorkoutStepDuration = (workoutTarget != null) ? workoutTarget.step.durationValue : 0;
+			RemainingWorkoutTime = WorkoutStepDuration - (jTimertime - StartTimeNewStep);
 		} else {
 			hasWorkoutStep = false;
 			WorkoutStepLowBoundary = 0;
@@ -381,7 +394,23 @@ class CiqView extends ExtramemView {
         		}
         		fieldLabel[i] = "H%target";
         	    fieldFormat[i] = "power";
-        	} 
+        	} else if (metric[i] == 121) {
+	            if (hasWorkoutStep == true) {
+		            fieldValue[i] = WorkoutStepNr;
+    	        } else {
+        			fieldValue[i] = 0;
+        		}
+        		fieldLabel[i] = "Step nr";
+        	    fieldFormat[i] = "0decimal";
+        	} else if (metric[i] == 122) {
+	            if (hasWorkoutStep == true) {
+		            fieldValue[i] = RemainingWorkoutTime;
+    	        } else {
+        			fieldValue[i] = 0;
+        		}
+        		fieldLabel[i] = "TS remain";
+        	    fieldFormat[i] = "time";
+        	}
         	//!einde invullen field metrics
 		}
 		//! Conditions for showing the demoscreen       

@@ -74,6 +74,7 @@
 	<string id="lHRMenu">___Heartrate items___</string>
 	<string id="lCadenceMenu">___Cadence items___</string>
 	<string id="lSPowerMenu">___Power items___</string>
+	<string id="lWorkoutMenu">___Workout items___</string>
 	<string id="lPIMenu">___Performance indicator items___</string>
 	<string id="lAltitudeMenu">___Altitude and temperature items___</string>
     <string id="lTimerDisplay">Timer field</string>
@@ -252,6 +253,8 @@
     <string id="lHtarget">Upper power boundary of a workout step, from Training peaks etc, corrected by temperature/humidity/altitude if set in settings</string>
     <string id="lLperctarget">Lower power boundary of a workout step in % van FTP, from Training peaks etc, corrected by temperature/humidity/altitude if set in settings</string> 
     <string id="lHperctarget">Upper power boundary of a workout step in % van FTP, from Training peaks etc, corrected by temperature/humidity/altitude if set in settings</string>
+    <string id="lStepnumber">Current step number of a workout</string>
+    <string id="lReamingTimeOfStep">Remaining time of the current step of a workout</string>
     <string id="loverruleWourkout">Use a static powerzone for alerts, not powerzones from workout steps</string>
     <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>      
 </strings>     
@@ -443,12 +446,7 @@
         <listEntry value="86">@Strings.lApercMaxHR</listEntry>
                 
         <listEntry value="996">@Strings.lSPowerMenu</listEntry>
-        <listEntry value="107">@Strings.lPtargetcorrect</listEntry>
         <listEntry value="106">@Strings.lCalcPwrTempcorrect</listEntry>
-        <listEntry value="117">@Strings.lLtarget</listEntry>
-        <listEntry value="118">@Strings.lHtarget</listEntry>
-        <listEntry value="119">@Strings.lLperctarget</listEntry>
-        <listEntry value="120">@Strings.lHperctarget</listEntry>
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="57">@Strings.lNPower</listEntry>
         <listEntry value="38">@Strings.lSPowerzone</listEntry>
@@ -474,6 +472,15 @@
         <listEntry value="76">@Strings.lpercFTP5s</listEntry>
         <listEntry value="77">@Strings.lpercFTP10s</listEntry>
         <listEntry value="78">@Strings.lpercFTPsec</listEntry>
+
+		<listEntry value="1000">@Strings.lWorkoutMenu</listEntry>
+		<listEntry value="107">@Strings.lPtargetcorrect</listEntry>
+        <listEntry value="117">@Strings.lLtarget</listEntry>
+        <listEntry value="118">@Strings.lHtarget</listEntry>
+        <listEntry value="119">@Strings.lLperctarget</listEntry>
+        <listEntry value="120">@Strings.lHperctarget</listEntry>
+        <listEntry value="121">@Strings.lStepnumber</listEntry>
+        <listEntry value="122">@Strings.lReamingTimeOfStep</listEntry>
 
         <listEntry value="997">@Strings.lPIMenu</listEntry>
         <listEntry value="31">@Strings.lCEIndex</listEntry>
@@ -568,12 +575,7 @@
         <listEntry value="86">@Strings.lApercMaxHR</listEntry>
                 
         <listEntry value="996">@Strings.lSPowerMenu</listEntry>
-        <listEntry value="107">@Strings.lPtargetcorrect</listEntry>
         <listEntry value="106">@Strings.lCalcPwrTempcorrect</listEntry>
-        <listEntry value="117">@Strings.lLtarget</listEntry>
-        <listEntry value="118">@Strings.lHtarget</listEntry>
-        <listEntry value="119">@Strings.lLperctarget</listEntry>
-        <listEntry value="120">@Strings.lHperctarget</listEntry>
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="57">@Strings.lNPower</listEntry>
         <listEntry value="38">@Strings.lSPowerzone</listEntry>
@@ -599,6 +601,15 @@
         <listEntry value="76">@Strings.lpercFTP5s</listEntry>
         <listEntry value="77">@Strings.lpercFTP10s</listEntry>
         <listEntry value="78">@Strings.lpercFTPsec</listEntry>
+
+		<listEntry value="1000">@Strings.lWorkoutMenu</listEntry>
+		<listEntry value="107">@Strings.lPtargetcorrect</listEntry>
+        <listEntry value="117">@Strings.lLtarget</listEntry>
+        <listEntry value="118">@Strings.lHtarget</listEntry>
+        <listEntry value="119">@Strings.lLperctarget</listEntry>
+        <listEntry value="120">@Strings.lHperctarget</listEntry>
+        <listEntry value="121">@Strings.lStepnumber</listEntry>
+        <listEntry value="122">@Strings.lReamingTimeOfStep</listEntry>
 
         <listEntry value="997">@Strings.lPIMenu</listEntry>
         <listEntry value="31">@Strings.lCEIndex</listEntry>
@@ -686,12 +697,7 @@
         <listEntry value="86">@Strings.lApercMaxHR</listEntry>
                 
         <listEntry value="996">@Strings.lSPowerMenu</listEntry>
-        <listEntry value="107">@Strings.lPtargetcorrect</listEntry>
         <listEntry value="106">@Strings.lCalcPwrTempcorrect</listEntry>
-        <listEntry value="117">@Strings.lLtarget</listEntry>
-        <listEntry value="118">@Strings.lHtarget</listEntry>
-        <listEntry value="119">@Strings.lLperctarget</listEntry>
-        <listEntry value="120">@Strings.lHperctarget</listEntry>
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="57">@Strings.lNPower</listEntry>
         <listEntry value="38">@Strings.lSPowerzone</listEntry>
@@ -717,6 +723,15 @@
         <listEntry value="76">@Strings.lpercFTP5s</listEntry>
         <listEntry value="77">@Strings.lpercFTP10s</listEntry>
         <listEntry value="78">@Strings.lpercFTPsec</listEntry>
+
+		<listEntry value="1000">@Strings.lWorkoutMenu</listEntry>
+		<listEntry value="107">@Strings.lPtargetcorrect</listEntry>
+        <listEntry value="117">@Strings.lLtarget</listEntry>
+        <listEntry value="118">@Strings.lHtarget</listEntry>
+        <listEntry value="119">@Strings.lLperctarget</listEntry>
+        <listEntry value="120">@Strings.lHperctarget</listEntry>
+        <listEntry value="121">@Strings.lStepnumber</listEntry>
+        <listEntry value="122">@Strings.lReamingTimeOfStep</listEntry>
 
         <listEntry value="997">@Strings.lPIMenu</listEntry>
         <listEntry value="31">@Strings.lCEIndex</listEntry>
@@ -929,12 +944,7 @@
         <listEntry value="86">@Strings.lApercMaxHR</listEntry>
                 
         <listEntry value="996">@Strings.lSPowerMenu</listEntry>
-        <listEntry value="107">@Strings.lPtargetcorrect</listEntry>
         <listEntry value="106">@Strings.lCalcPwrTempcorrect</listEntry>
-        <listEntry value="117">@Strings.lLtarget</listEntry>
-        <listEntry value="118">@Strings.lHtarget</listEntry>
-        <listEntry value="119">@Strings.lLperctarget</listEntry>
-        <listEntry value="120">@Strings.lHperctarget</listEntry>
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="57">@Strings.lNPower</listEntry>
         <listEntry value="38">@Strings.lSPowerzone</listEntry>
@@ -960,6 +970,15 @@
         <listEntry value="76">@Strings.lpercFTP5s</listEntry>
         <listEntry value="77">@Strings.lpercFTP10s</listEntry>
         <listEntry value="78">@Strings.lpercFTPsec</listEntry>
+
+		<listEntry value="1000">@Strings.lWorkoutMenu</listEntry>
+		<listEntry value="107">@Strings.lPtargetcorrect</listEntry>
+        <listEntry value="117">@Strings.lLtarget</listEntry>
+        <listEntry value="118">@Strings.lHtarget</listEntry>
+        <listEntry value="119">@Strings.lLperctarget</listEntry>
+        <listEntry value="120">@Strings.lHperctarget</listEntry>
+        <listEntry value="121">@Strings.lStepnumber</listEntry>
+        <listEntry value="122">@Strings.lReamingTimeOfStep</listEntry>
 
         <listEntry value="997">@Strings.lPIMenu</listEntry>
         <listEntry value="31">@Strings.lCEIndex</listEntry>
@@ -1054,12 +1073,7 @@
         <listEntry value="86">@Strings.lApercMaxHR</listEntry>
                 
         <listEntry value="996">@Strings.lSPowerMenu</listEntry>
-        <listEntry value="107">@Strings.lPtargetcorrect</listEntry>
         <listEntry value="106">@Strings.lCalcPwrTempcorrect</listEntry>
-        <listEntry value="117">@Strings.lLtarget</listEntry>
-        <listEntry value="118">@Strings.lHtarget</listEntry>
-        <listEntry value="119">@Strings.lLperctarget</listEntry>
-        <listEntry value="120">@Strings.lHperctarget</listEntry>
         <listEntry value="20">@Strings.lSPower</listEntry>
         <listEntry value="57">@Strings.lNPower</listEntry>
         <listEntry value="38">@Strings.lSPowerzone</listEntry>
@@ -1085,6 +1099,15 @@
         <listEntry value="76">@Strings.lpercFTP5s</listEntry>
         <listEntry value="77">@Strings.lpercFTP10s</listEntry>
         <listEntry value="78">@Strings.lpercFTPsec</listEntry>
+
+		<listEntry value="1000">@Strings.lWorkoutMenu</listEntry>
+		<listEntry value="107">@Strings.lPtargetcorrect</listEntry>
+        <listEntry value="117">@Strings.lLtarget</listEntry>
+        <listEntry value="118">@Strings.lHtarget</listEntry>
+        <listEntry value="119">@Strings.lLperctarget</listEntry>
+        <listEntry value="120">@Strings.lHperctarget</listEntry>
+        <listEntry value="121">@Strings.lStepnumber</listEntry>
+        <listEntry value="122">@Strings.lReamingTimeOfStep</listEntry>
 
         <listEntry value="997">@Strings.lPIMenu</listEntry>
         <listEntry value="31">@Strings.lCEIndex</listEntry>
