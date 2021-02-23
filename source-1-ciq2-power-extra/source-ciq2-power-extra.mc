@@ -42,8 +42,10 @@ class CiqView extends ExtramemView {
     var WorkoutStepNr						= 0;
     var WorkoutStepDuration 				= 0; 
     var StartTimeNewStep					= 0;
+    var StartDistanceNewStep				= 0;
     var RemainingWorkoutTime  				= 0;
-    
+    var RemainingWorkoutDistance			= 0;
+    var WorkoutStepDurationType  			= 9;
             		            				
     function initialize() {
         ExtramemView.initialize();
@@ -242,7 +244,7 @@ class CiqView extends ExtramemView {
 				} else {
 					RSS = RSS + + 0.03 * Math.pow(((runPower+0.001)/uCP),3.5);
 				}
-			}	 			             
+			}			 			             
         }
 	}
 
@@ -253,13 +255,18 @@ class CiqView extends ExtramemView {
 
 	//! Store last lap quantities and set lap markers after a step within a structured workout
 	function onWorkoutStepComplete() {
+	var info = Activity.getActivityInfo();
 		Lapaction ();
-		++WorkoutStepNr;
+		++WorkoutStepNr;		
+		StartTimeNewStep = jTimertime;
+        StartDistanceNewStep = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
 	}
-`
+
 	function onWorkoutStarted() {
+        var info = Activity.getActivityInfo();
         WorkoutStepNr = 1;
         StartTimeNewStep = jTimertime;
+        StartDistanceNewStep = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
     }
 
 	function onUpdate(dc) {
@@ -347,6 +354,7 @@ class CiqView extends ExtramemView {
 		mIntensityFactor = (uFTP != 0) ? mNormalizedPow / uFTP : 0;
 		mTTS = (uFTP != 0) ? (jTimertime * mNormalizedPow * mIntensityFactor)/(uFTP * 3600) * 100 : 999;
 
+		var ElapsedDistance = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
 		if (Activity has :getCurrentWorkoutStep) {
 			workoutTarget = Toybox.Activity.getCurrentWorkoutStep();
 			hasWorkoutStep = true;
@@ -354,13 +362,21 @@ class CiqView extends ExtramemView {
 			WorkoutStepHighBoundary = (workoutTarget != null) ? (workoutTarget.step.targetValueHigh.toNumber() - 1000) : 999;
 			WorkoutStepLowBoundary = (uOnlyPwrCorrFactor == false) ? WorkoutStepLowBoundary : WorkoutStepLowBoundary/PwrCorrFactor;
 			WorkoutStepHighBoundary = (uOnlyPwrCorrFactor == false) ? WorkoutStepHighBoundary : WorkoutStepHighBoundary/PwrCorrFactor;
-			WorkoutStepDuration = (workoutTarget != null) ? workoutTarget.step.durationValue : 0;
-			RemainingWorkoutTime = WorkoutStepDuration - (jTimertime - StartTimeNewStep);
+			WorkoutStepDuration = (workoutTarget != null) ? workoutTarget.step.durationValue.toNumber() : 0;
+			WorkoutStepDurationType = (workoutTarget != null) ? workoutTarget.step.durationType.toNumber() : 0;
+			if (WorkoutStepDurationType == 0) {
+				RemainingWorkoutTime = WorkoutStepDuration - (jTimertime - StartTimeNewStep);
+			} else if (WorkoutStepDurationType == 1) {
+				RemainingWorkoutDistance = WorkoutStepDuration/unitD - (ElapsedDistance - StartDistanceNewStep);
+			}				 
 		} else {
 			hasWorkoutStep = false;
 			WorkoutStepLowBoundary = 0;
 			WorkoutStepHighBoundary = 999;
+			RemainingWorkoutTime = 0;
+			RemainingWorkoutDistance = 0;
 		}
+	
 
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 		AveragePower = (info.averagePower != null) ? info.averagePower : 0;
@@ -564,23 +580,23 @@ class CiqView extends ExtramemView {
     	        fieldLabel[i] = "Pw cor%";
         	    fieldFormat[i] = "2decimal";
         	} else if (metric[i] == 107) {
-	            if (hasWorkoutStep == true) {
-        			fieldValue[i] = (mPowerWarningunder + mPowerWarningupper)/2;
+	            if (workoutTarget != null) {
+        			fieldValue[i] = (uOnlyPwrCorrFactor == false) ? (mPowerWarningunder + mPowerWarningupper)/2 : (mPowerWarningunder + mPowerWarningupper)/2/PwrCorrFactor;
         		} else {
 	            	fieldValue[i] = (uOnlyPwrCorrFactor == false) ? uPowerTarget : uPowerTarget/PwrCorrFactor;
 	            }
     	        fieldLabel[i] = "Ptarget";
         	    fieldFormat[i] = "power";
         	} else if (metric[i] == 117) {
-	            fieldValue[i] = WorkoutStepLowBoundary;
+	            fieldValue[i] = (workoutTarget != null) ? WorkoutStepLowBoundary : 0;
     		    fieldLabel[i] = "Ltarget";
         		fieldFormat[i] = "power";
         	} else if (metric[i] == 118) {
-	            fieldValue[i] = WorkoutStepHighBoundary;
+	            fieldValue[i] = (workoutTarget != null) ? WorkoutStepHighBoundary : 0;
         		fieldLabel[i] = "Htarget";
         	    fieldFormat[i] = "power";
         	} else if (metric[i] == 119) {
-	            if (hasWorkoutStep == true) {
+	            if (workoutTarget != null) {
 	            	fieldValue[i] = (uFTP != 0) ? WorkoutStepLowBoundary*100/uFTP : 0;
     	        } else {
         			fieldValue[i] = 0;
@@ -588,7 +604,7 @@ class CiqView extends ExtramemView {
         		fieldLabel[i] = "L%target";
         	    fieldFormat[i] = "power";
         	} else if (metric[i] == 120) {
-	            if (hasWorkoutStep == true) {
+	            if (workoutTarget != null) {
 		            fieldValue[i] = (uFTP != 0) ? WorkoutStepHighBoundary*100/uFTP : 100;
     	        } else {
         			fieldValue[i] = 100;
@@ -596,21 +612,25 @@ class CiqView extends ExtramemView {
         		fieldLabel[i] = "H%target";
         	    fieldFormat[i] = "power";
         	} else if (metric[i] == 121) {
-	            if (hasWorkoutStep == true) {
-		            fieldValue[i] = WorkoutStepNr;
-    	        } else {
-        			fieldValue[i] = 0;
-        		}
+	            fieldValue[i] = (workoutTarget != null) ? WorkoutStepNr : 0;
         		fieldLabel[i] = "Step nr";
         	    fieldFormat[i] = "0decimal";
         	} else if (metric[i] == 122) {
-	            if (hasWorkoutStep == true) {
-		            fieldValue[i] = RemainingWorkoutTime;
+	            if (workoutTarget != null) {
+		            if (WorkoutStepDurationType == 0) {
+						fieldValue[i] = RemainingWorkoutTime;
+						fieldLabel[i] = "Remain T";
+        	    		fieldFormat[i] = "time";
+					} else if (WorkoutStepDurationType == 1) {
+						fieldValue[i] = RemainingWorkoutDistance;
+						fieldLabel[i] = "Remain D";
+        	    		fieldFormat[i] = "2decimal";
+					}     
     	        } else {
         			fieldValue[i] = 0;
+        			fieldLabel[i] = "No workout";
+        	    	fieldFormat[i] = "0decimal";
         		}
-        		fieldLabel[i] = "TS remain";
-        	    fieldFormat[i] = "time";
         	}
         	//!einde invullen field metrics
 		}
