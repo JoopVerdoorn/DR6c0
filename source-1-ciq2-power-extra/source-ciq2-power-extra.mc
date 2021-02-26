@@ -715,7 +715,6 @@ class CiqView extends ExtramemView {
         		
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
         if ( fieldformat.equals("time" ) == true ) {    
-	    	if ( counter == 1 or counter == 2 or counter == 3 or counter == 4 or counter == 5 or counter == 6 ) {  
 	    		var fTimerSecs = (fieldvalue % 60).format("%02d");
         		var fTimer = (fieldvalue / 60).format("%d") + ":" + fTimerSecs;  //! Format time as m:ss
 	    		var xx = x;
@@ -731,7 +730,6 @@ class CiqView extends ExtramemView {
        			} else {	
        				dc.drawText(xx, y, Garminfont, fTimer, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        			}
-        	}
         } else {
  			if ( counter == 3) {
         		dc.drawText(x, y, Garminfontgroot, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
