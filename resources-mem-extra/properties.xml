@@ -31,13 +31,14 @@
     <property id="pdisablelabel6" type="boolean">false</property>
     <property id="ptempunits" type="boolean">false</property>
     <property id="pTempeCalibration" type="number">0</property>
+    <property id="pShowRedClock" type="boolean">false</property>
   </properties>
 
 	
   <strings>
     <string id="AppName">Datarun premium with 6 metrics, main version</string>
-    <string id="AppVersion">2.31d</string>
-    <string id="lDummysetting4version">Version 2.31d of Datarun premium with 6 metrics, main version (dummy setting)</string>
+    <string id="AppVersion">2.32</string>
+    <string id="lDummysetting4version">Version 2.32 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -147,6 +148,7 @@
     <string id="lkCalories">Used kilocalories</string>
     <string id="lLLPaceper100m">Pace of last lap in seconds per 100 meter (for track running)</string>
     <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
+    <string id="lShowRedClock">Show red clock over all metrics before the start of an activity (useful for a race when the normal clock isn't visible)</string>
  </strings>
 
   <settings>
@@ -176,6 +178,9 @@
     </setting>
     <setting propertyKey="@Properties.pTempeCalibration" title="@Strings.lTempeCalibration">
       <settingConfig type="numeric"  required="true"/>
+    </setting>
+    <setting propertyKey="@Properties.pShowRedClock" title="@Strings.lShowRedClock">
+      <settingConfig type="boolean" required="false" />
     </setting>
     <setting propertyKey="@Properties.pMilClockAltern" title="@Strings.lMilClockAltern">
       <settingConfig type="list" required="true">
