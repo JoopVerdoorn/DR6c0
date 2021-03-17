@@ -95,8 +95,10 @@ class CiqView extends ExtramemView {
 	    	mFontalertColorLow 	 = Graphics.COLOR_RED;
 		} else if ( uFontalertColorLow == 6 ) {
 	    	mFontalertColorLow 	 = Graphics.COLOR_BLACK;
+	    } else if ( uFontalertColorLow == 7 ) {
+	    	mFontalertColorLow 	 = Graphics.COLOR_DK_BLUE;
 		}
-
+		
 		if ( uFontalertColorHigh == 0 ) {
 	    	mFontalertColorHigh 	 = Graphics.COLOR_GREEN;
 	    } else if ( uFontalertColorHigh == 1 ) {
@@ -111,6 +113,8 @@ class CiqView extends ExtramemView {
 	    	mFontalertColorHigh 	 = Graphics.COLOR_RED;
 		} else if ( uFontalertColorHigh == 6 ) {
 	    	mFontalertColorHigh 	 = Graphics.COLOR_BLACK;
+	    } else if ( uFontalertColorLow == 7 ) {
+	    	mFontalertColorHigh 	 = Graphics.COLOR_DK_BLUE;
 		}
 		
 		if (utempunits == true ) {
@@ -675,9 +679,9 @@ class CiqView extends ExtramemView {
 						fieldLabel[i] = "Remain D";
         	    		fieldFormat[i] = "2decimal";
         	    	} else if (WorkoutStepDurationType == 5) {
-						fieldValue[i] = 0;
+						fieldValue[i] = jTimertime-StartTimeNewStep;
 						fieldLabel[i] = "Button";
-        	    		fieldFormat[i] = "0decimal";
+        	    		fieldFormat[i] = "time";
 					}     
     	        } else {
         			fieldValue[i] = 0;
@@ -687,6 +691,34 @@ class CiqView extends ExtramemView {
         	}
         	//!einde invullen field metrics
 		}
+		
+		//!Calculation of powerbased clock field metrics
+		if (uClockFieldMetric == 107) {
+			if (workoutTarget != null) {
+        		RealPowerTarget = (uOnlyPwrCorrFactor == false) ? (mPowerWarningunder + mPowerWarningupper)/2 : (mPowerWarningunder + mPowerWarningupper)/2/PwrCorrFactor;
+        	} else {
+	           	RealPowerTarget = (uOnlyPwrCorrFactor == false) ? uPowerTarget : uPowerTarget/PwrCorrFactor;
+	        }
+		} else if (uClockFieldMetric == 121) {
+	        RealWorkoutStepNr = (workoutTarget != null) ? WorkoutStepNr : 0;     
+       	} else if (uClockFieldMetric == 122) {
+            if (workoutTarget != null) {
+	            if (WorkoutStepDurationType == 0) {
+					RealRemainingWorkoutTime = RemainingWorkoutTime;
+					DistinClockfield = false;
+				} else if (WorkoutStepDurationType == 1) {
+					RealRemainingWorkoutTime = RemainingWorkoutDistance;
+					DistinClockfield = true;
+       	    	} else if (WorkoutStepDurationType == 5) {
+					RealRemainingWorkoutTime = jTimertime-StartTimeNewStep;
+					DistinClockfield = false;
+				}     
+   	        } else {
+       			RealRemainingWorkoutTime = 0;
+       			DistinClockfield = false;
+       		}
+		}		
+		
 		//! Conditions for showing the demoscreen       
         if (uShowDemo == false) {
         	if (licenseOK == false && jTimertime > 900)  {
