@@ -276,19 +276,19 @@ class DatarunpremiumView extends Ui.DataField {
 	        } else if (metric[i] == 4) {
     	        fieldValue[i] = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
         	    fieldLabel[i] = "Distance";
-            	fieldFormat[i] = "1decimal";   
+            	fieldFormat[i] = "2decimal";   
 	        } else if (metric[i] == 5) {
     	        fieldValue[i] = mLapElapsedDistance/unitD;
         	    fieldLabel[i] = "Lap D";
-            	fieldFormat[i] = "1decimal";
+            	fieldFormat[i] = "2decimal";
 			} else if (metric[i] == 6) {
     	        fieldValue[i] = mLastLapElapsedDistance/unitD;
         	    fieldLabel[i] = "L-1LapD";
-            	fieldFormat[i] = "1decimal";
+            	fieldFormat[i] = "2decimal";
 			} else if (metric[i] == 7) {
 	            fieldValue[i] = (info.elapsedDistance != null) ? info.elapsedDistance / (mLaps * unitD) : 0;
     	        fieldLabel[i] = "AvgLapD";
-        	    fieldFormat[i] = "1decimal";
+        	    fieldFormat[i] = "2decimal";
 	        } else if (metric[i] == 8) {
    	        	fieldValue[i] = CurrentSpeedinmpersec;
         	    fieldLabel[i] = "Pace";

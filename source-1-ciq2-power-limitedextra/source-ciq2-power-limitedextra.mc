@@ -435,9 +435,9 @@ class CiqView extends ExtramemView {
 						fieldLabel[i] = "Remain D";
         	    		fieldFormat[i] = "2decimal";
         	    	} else if (WorkoutStepDurationType == 5) {
-						fieldValue[i] = 0;
+						fieldValue[i] = jTimertime-StartTimeNewStep;
 						fieldLabel[i] = "Button";
-        	    		fieldFormat[i] = "0decimal";
+        	    		fieldFormat[i] = "time";
 					}     
     	        } else {
         			fieldValue[i] = 0;

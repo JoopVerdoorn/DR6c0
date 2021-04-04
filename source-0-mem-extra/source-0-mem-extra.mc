@@ -49,6 +49,7 @@ class ExtramemView extends DatarunpremiumView {
 	var Diff2 								= 0;
 	var utempcalibration					= 0;
 	var hrRest;
+	var HelpVar;
 	hidden var RealPowerTarget 				= 0;
 	hidden var RealWorkoutStepNr 			= 0;
 	hidden var RealRemainingWorkoutTime		= 0;
@@ -391,10 +392,10 @@ class ExtramemView extends DatarunpremiumView {
             	CFMFormat = "0decimal";           	
         	}  else if (uClockFieldMetric == 61) {
            		CFMValue = (info.currentCadence != null) ? Math.round(info.currentCadence/2) : 0;
-            	CFMLabel = "RCadence";           	
+            	CFMFormat = "0decimal";           	
         	}  else if (uClockFieldMetric == 62) {
            		CFMValue = (info.currentSpeed != null) ? 3.6*((Pace1+Pace2+Pace3)/3)*1000/unitP : 0;
-            	CFMLabel = "Spd 3s";           	
+            	CFMFormat = "1decimal";           	
         	}  else if (uClockFieldMetric == 63) {
            		CFMValue = 3.6*Averagespeedinmpersec*1000/unitP ;
             	CFMFormat = "1decimal";           	
@@ -464,6 +465,26 @@ class ExtramemView extends DatarunpremiumView {
    	    			CFMFormat = "2decimal";
    	    		}
 			}
+			
+		//! Determine HR-zone for clockfield
+        if (uClockFieldMetric==46) {
+			if (CFMValue >= uHrZones[5]) {
+				HelpVar = 6;			
+			} else if (CFMValue >= uHrZones[4]) {    	
+				HelpVar = Math.round(10*(5+(CFMValue-uHrZones[4]+0.00001)/(uHrZones[5]-uHrZones[4]+0.00001)))/10;			
+			} else if (CFMValue >= uHrZones[3]) {
+				HelpVar = Math.round(10*(4+(CFMValue-uHrZones[3]+0.00001)/(uHrZones[4]-uHrZones[3]+0.00001)))/10;			
+			} else if (CFMValue >= uHrZones[2]) {
+				HelpVar = Math.round(10*(3+(CFMValue-uHrZones[2]+0.00001)/(uHrZones[3]-uHrZones[2]+0.00001)))/10;
+			} else if (CFMValue >= uHrZones[1]) {
+				HelpVar = Math.round(10*(2+(CFMValue-uHrZones[1]+0.00001)/(uHrZones[2]-uHrZones[1]+0.00001)))/10;
+			} else if (CFMValue >= uHrZones[0]) {			
+				HelpVar = Math.round(10*(1+(CFMValue-uHrZones[0]+0.00001)/(uHrZones[1]-uHrZones[0]+0.00001)))/10;
+			} else {
+    	        HelpVar = Math.round(10*((CFMValue-hrRest+0.00001)/(uHrZones[0]-0.00001)))/10;
+			}		
+			CFMValue = HelpVar;        
+        }
 			 
 
 		//! Conditions for showing the demoscreen       
@@ -598,8 +619,6 @@ class ExtramemView extends DatarunpremiumView {
 		} else if (uMilClockAltern == 3) {		//! Display of metric in Clock field
 			var originalFontcolor = mColourFont;
 			var Temp;
-			CFMValue = (uClockFieldMetric==38) ? Powerzone : CFMValue; 
-			CFMValue = (uClockFieldMetric==46) ? HRzone : CFMValue;
 			if ( CFMFormat.equals("0decimal" ) == true ) {
         		Temp = Math.round(CFMValue);
         		CFMValue = Temp.format("%.0f");
