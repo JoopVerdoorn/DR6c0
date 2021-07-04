@@ -150,7 +150,7 @@ class ExtramemView extends DatarunpremiumView {
 	   if (uShowDemo == false ) {
 
 		//! Display colored labels on screen	
-			for (var i = 1; i < 7; ++i) {
+			for (i = 1; i < 7; ++i) {
 			   	if ( i == 1 ) {			//!upper row, left    	
 	    			if (disablelabel[1] == false) {
 						Coloring(dc,i,fieldValue[i],"018,029,100,019");

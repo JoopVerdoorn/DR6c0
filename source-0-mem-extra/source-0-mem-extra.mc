@@ -499,7 +499,7 @@ class ExtramemView extends DatarunpremiumView {
 
 		//! Display colored labels on screen	
 		if (mySettings.screenWidth == 260 and mySettings.screenHeight == 260) {  //! Fenix 6 pro labels
-			for (var i = 1; i < 7; ++i) {
+			for (i = 1; i < 7; ++i) {
 			   	if ( i == 1 ) {			//!upper row, left    	
 	    			if (disablelabel[1] == false) {
 	    				Coloring(dc,i,fieldValue[i],"018,031,110,020");
@@ -527,7 +527,7 @@ class ExtramemView extends DatarunpremiumView {
 		    	}
 		    }       	
 		} else if (mySettings.screenWidth == 280 and mySettings.screenHeight == 280) {     //! Fenix 6x pro labels
-			for (var i = 1; i < 7; ++i) {
+			for (i = 1; i < 7; ++i) {
 			   	if ( i == 1 ) {			//!upper row, left    	
 					if (disablelabel[1] == false) {
 						Coloring(dc,i,fieldValue[i],"021,034,117,020");
@@ -555,7 +555,7 @@ class ExtramemView extends DatarunpremiumView {
 		    	}
 		    }       	
 		} else {
-			for (var i = 1; i < 7; ++i) {
+			for (i = 1; i < 7; ++i) {
 			   	if ( i == 1 ) {			//!upper row, left    	
 	    			if (disablelabel[1] == false) {
 						Coloring(dc,i,fieldValue[i],"018,029,100,019");

@@ -273,7 +273,7 @@ class DatarunpremiumView extends Ui.DataField {
 		//!Fill field metrics
 		currentHR = (info.currentHeartRate != null) ? info.currentHeartRate : 0;
 		var i = 0; 
-	    for (var i = 1; i < 7; ++i) {	    
+	    for (i = 1; i < 7; ++i) {	    
         	if (metric[i] == 0) {
             	fieldValue[i] = (info.timerTime != null) ? info.timerTime/1000 : 0;
             	fieldLabel[i] = "Timer";
