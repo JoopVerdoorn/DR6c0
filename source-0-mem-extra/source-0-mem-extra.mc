@@ -1,3 +1,4 @@
+using Toybox.System as Sys;
 using Toybox.SensorHistory;
 using Toybox.Lang;
 using Toybox.System;
@@ -207,7 +208,7 @@ class ExtramemView extends DatarunpremiumView {
         	} else if (metric[i] == 54) {
     	        fieldValue[i] = (info.trainingEffect != null) ? info.trainingEffect : 0;
         	    fieldLabel[i] = "T effect";
-            	fieldFormat[i] = "2decimal";           	
+            	fieldFormat[i] = "1decimal";           	
 			} else if (metric[i] == 52) {
            		fieldValue[i] = valueAsc;
             	fieldLabel[i] = "EL gain";
@@ -282,6 +283,11 @@ class ExtramemView extends DatarunpremiumView {
 	            fieldValue[i] = (utempunits == false) ? fieldValue[i]+utempcalibration : fieldValue[i]*1.8+32+utempcalibration;
     	        fieldLabel[i] = "Tempe T";
     	        fieldFormat[i] = "1decimal";
+    	    } else if (metric[i] == 123) {			
+				var stats = Sys.getSystemStats();
+				fieldValue[i] = stats.battery;
+				fieldLabel[i] = "Battery";
+            	fieldFormat[i] = "0decimal";
 			} 
 		}
 

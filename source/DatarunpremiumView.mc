@@ -149,7 +149,7 @@ class DatarunpremiumView extends Ui.DataField {
 		
 		//! Setting ID's for licensing and testing license
 		ID0 = watchType.substring(5, 9);
-		ID0 = 511+ID0.toNumber();
+		ID0 = 511+ID0.toNumber();		
 		var mHash = hashfunction(WatchID);	
 		mHash = (mHash > 0) ? mHash : -mHash;
 		ID2 = Math.round(mHash / 315127)+329;
@@ -387,6 +387,7 @@ class DatarunpremiumView extends Ui.DataField {
         	    fieldFormat[i] = "0decimal";
 			} else if (metric[i] == 50) {
 				fieldValue[i] = (info.currentCadence != null) ? info.currentCadence : 0; 
+				fieldValue[i] = (ID0 == 4163) ? fieldValue[i]*2 : fieldValue[i];  //! multiply by two for FR945LTE  
     	        fieldLabel[i] = "Cadence";
         	    fieldFormat[i] = "0decimal";
 			} else if (metric[i] == 51) {

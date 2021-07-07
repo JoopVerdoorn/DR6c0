@@ -272,6 +272,28 @@ class CiqView extends ExtramemView {
 					PwrCorrFactor = 1- (B24 - B25) - (B39-B38)/100;
 				}
 			}
+
+		
+			var vibrateData = [
+				new Attention.VibeProfile( 100, 200 )
+			];
+					
+			if (VibrateHighRequired == true) {
+    			Toybox.Attention.vibrate(vibrateData);
+    			if (uAlertbeep == true) {
+    				Attention.playTone(Attention.TONE_ALERT_HI);
+    			}
+    			Toybox.Attention.vibrate(vibrateData);
+    			VibrateHighRequired = false;
+    		}
+    		
+    		if (VibrateLowRequired == true) {
+    			if (uAlertbeep == true) {
+    				Attention.playTone(Attention.TONE_ALERT_LO);
+    			}
+    			Toybox.Attention.vibrate(vibrateData);
+    			VibrateLowRequired = false;
+    		}
            	
             //!Calculate lappower
             mPowerTime		 = (info.currentPower != null and mTimerRunning) ? mPowerTime+1 : mPowerTime;
@@ -281,7 +303,7 @@ class CiqView extends ExtramemView {
             	runPower 		 = (info.currentPower != null) ? info.currentPower : 0;
             }
 			mElapsedPower    = (mTimerRunning) ? mElapsedPower + runPower : mElapsedPower;
-			
+        				
 			if (uCP != 0) {
 				if ((runPower+0.001)/uCP < 0.5 ) {
 					RSS = RSS + 0.0026516504294491;
@@ -584,7 +606,7 @@ class CiqView extends ExtramemView {
         	    fieldFormat[i] = "2decimal";
 			} else if (metric[i] == 59) {
 	            fieldValue[i] = mTTS;
-    	        fieldLabel[i] = "TSS";
+    	        fieldLabel[i] = "TTS";
         	    fieldFormat[i] = "0decimal";
 			} else if (metric[i] == 60) {
 	            fieldValue[i] = RSS;

@@ -37,10 +37,11 @@
 	
   <strings>
     <string id="AppName">Datarun premium with 6 metrics, main version</string>
-    <string id="AppVersion">2.33d</string>
-    <string id="lDummysetting4version">Version 2.33d of Datarun premium with 6 metrics, main version (dummy setting)</string>
+    <string id="AppVersion">2.34</string>
+    <string id="lDummysetting4version">Version 2.34 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
+	<string id="lMiscellaneousMenu">___Miscellaneous items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
 	<string id="lETAMenu">___ETA items___</string>
 	<string id="lSpeedMenu">___Speed items___</string>
@@ -149,6 +150,7 @@
     <string id="lLLPaceper100m">Pace of last lap in seconds per 100 meter (for track running)</string>
     <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
     <string id="lShowRedClock">Show red clock over all metrics before the start of an activity (useful for a race when the normal clock isn't visible)</string>
+    <string id="lBatteryPerc">Battery percentage</string>
  </strings>
 
   <settings>
@@ -273,6 +275,9 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
+        
+        <listEntry value="989">@Strings.lMiscellaneousMenu</listEntry>
+        <listEntry value="123">@Strings.lBatteryPerc</listEntry>
       </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pUpperRightMetric" title="@Strings.lUpperRightMetric">
@@ -349,6 +354,9 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
+        
+        <listEntry value="989">@Strings.lMiscellaneousMenu</listEntry>
+        <listEntry value="123">@Strings.lBatteryPerc</listEntry>
       </settingConfig>
     </setting>
 
@@ -418,6 +426,9 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
+        
+        <listEntry value="989">@Strings.lMiscellaneousMenu</listEntry>
+        <listEntry value="123">@Strings.lBatteryPerc</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pMiddleRightMetric" title="@Strings.lMiddleRightMetric">
@@ -486,6 +497,9 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
+        
+        <listEntry value="989">@Strings.lMiscellaneousMenu</listEntry>
+        <listEntry value="123">@Strings.lBatteryPerc</listEntry>
       </settingConfig>
     </setting>
     
@@ -563,6 +577,9 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
+        
+        <listEntry value="989">@Strings.lMiscellaneousMenu</listEntry>
+        <listEntry value="123">@Strings.lBatteryPerc</listEntry>
       </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pBottomRightMetric" title="@Strings.lBottomRightMetric">
@@ -639,6 +656,9 @@
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
+        
+        <listEntry value="989">@Strings.lMiscellaneousMenu</listEntry>
+        <listEntry value="123">@Strings.lBatteryPerc</listEntry>
        </settingConfig>
     </setting>
     <setting propertyKey="@Properties.pClockFieldMetric" title="@Strings.lClockFieldMetric">
