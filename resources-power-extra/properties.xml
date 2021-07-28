@@ -66,9 +66,7 @@
 
 	
   <strings>
-    <string id="AppName">Datarun premium with 6 metrics, main version</string>
-    <string id="AppVersion">2.31d</string>
-    <string id="lDummysetting4version">Version 2.34 of Datarun premium with 6 metrics, main version (dummy setting)</string>
+    <string id="lDummysetting4version">Version 2.40 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -277,7 +275,6 @@
     <string id="lStepnumber">Current step number of a workout (not for F5x)</string>
     <string id="lReamingTimeOfStep">Remaining time or distance of the current step of a workout (not for F5x)</string>
     <string id="loverruleWourkout">Use a static powerzone for alerts, not powerzones from workout steps (not for F5x)</string>
-    <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
     <string id="lShowRedClock">Show red clock over all metrics before the start of an activity (useful for a race when the normal clock isn't visible)</string>
     <string id="lBatteryPerc">Battery percentage</string>
 </strings>     

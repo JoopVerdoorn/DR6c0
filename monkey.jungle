@@ -2,7 +2,7 @@ project.manifest = manifest.xml
  
 # fix autobuild to be a specific device
 base.sourcePath=$(fr935.sourcePath)
-base.resourcePath=$(fr935.sourcePath)
+base.resourcePath=$(fr935.resourcePath)
  
 # define the actual sourcePaths
 fr245.sourcePath		=source-32kB;					source-1-ciq2-nopower;			source-2-nopower-nofont;	source-3-round-240x240

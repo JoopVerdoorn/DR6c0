@@ -36,9 +36,7 @@
 
 	
   <strings>
-    <string id="AppName">Datarun premium with 6 metrics, main version</string>
-    <string id="AppVersion">2.34</string>
-    <string id="lDummysetting4version">Version 2.34 of Datarun premium with 6 metrics, main version (dummy setting)</string>
+    <string id="lDummysetting4version">Version 2.40 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lMiscellaneousMenu">___Miscellaneous items___</string>
@@ -148,7 +146,6 @@
     <string id="lApercMaxHR">Average HR in percentage of MaxHR</string>	
     <string id="lkCalories">Used kilocalories</string>
     <string id="lLLPaceper100m">Pace of last lap in seconds per 100 meter (for track running)</string>
-    <string id="lCCnumber">C-Code generated on the watch by the corresponding main Datarun premium datafield</string>
     <string id="lShowRedClock">Show red clock over all metrics before the start of an activity (useful for a race when the normal clock isn't visible)</string>
     <string id="lBatteryPerc">Battery percentage</string>
  </strings>
