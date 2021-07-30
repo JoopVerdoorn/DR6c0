@@ -3,6 +3,7 @@ class CiqView extends ExtramemView {
 	hidden var mETA							= 0;
 	hidden var uETAfromLap 					= true;
 	var Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
+	hidden var TotalVertSpeedinmpersec = 0;
 	
     function initialize() {
         ExtramemView.initialize();	
@@ -25,6 +26,34 @@ class CiqView extends ExtramemView {
            	//!Calculate lapCadence
             mCadenceTime	 = (info.currentCadence != null) ? mCadenceTime+1 : mCadenceTime;
             mElapsedCadence= (info.currentCadence != null) ? mElapsedCadence + info.currentCadence : mElapsedCadence;
+            
+            //! Calculate vertical speed
+    	    valueDesc = (info.totalDescent != null) ? info.totalDescent : 0;
+        	Diff1 = valueDesc - valueDesclast;
+	        valueDesc = (unitD == 1609.344) ? valueDesc*3.2808 : valueDesc;
+    	    valueAsc = (info.totalAscent != null) ? info.totalAscent : 0;
+        	Diff2 = valueAsc - valueAsclast;        
+	        valueAsc = (unitD == 1609.344) ? valueAsc*3.2808 : valueAsc;
+    	    valueDesclast = valueDesc;
+        	valueAsclast = valueAsc;
+	        CurrentVertSpeedinmpersec = Diff2-Diff1;
+	        TotalVertSpeedinmpersec = TotalVertSpeedinmpersec + CurrentVertSpeedinmpersec;
+	        var i;
+    	     for (i = 1; i < 7; ++i) {
+	    	    if (metric[i] == 67 or metric[i] == 108) {
+					for (var j = 1; j < 30; ++j) {			
+						VertPace[31-j] = VertPace[30-j];
+					}
+					VertPace[1]	= CurrentVertSpeedinmpersec;
+					for (var j = 1; j < 31; ++j) {
+						totalVertPace = VertPace[j] + totalVertPace;
+					}
+					if (jTimertime>0) {		
+						AverageVertspeedinmper30sec= (jTimertime<31) ? totalVertPace/jTimertime : totalVertPace/30;
+						totalVertPace = 0;
+					}
+				}
+			}
         } 
 	}
 

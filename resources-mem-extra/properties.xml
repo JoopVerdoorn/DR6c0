@@ -32,6 +32,7 @@
     <property id="ptempunits" type="boolean">false</property>
     <property id="pTempeCalibration" type="number">0</property>
     <property id="pShowRedClock" type="boolean">false</property>
+    <property id="pCCnumber" type="number">9999999</property>
   </properties>
 
 	
@@ -93,7 +94,6 @@
 	<string id="lPaceper3km">Pace averaged over the last 3 seconds</string>
 	<string id="lPaceper5km">Pace averaged over the last 5 seconds</string>
 	<string id="lCurrentSpeed">Speed in km/mile per hour</string>
-	<string id="lAverage5secSpeed">Speed averaged over the last 5 seconds in km/mile per hour</string>	
 	<string id="lLapSpeed">Lap speed in km/mile per hour</string>
 	<string id="lLLSpeed">Last lap speed in km/mile per hour</string>
 	<string id="lAverageSpeed">Average speed in km/mile per hour</string>
@@ -104,7 +104,6 @@
     <string id="lETA">Estimated time of arrival</string>
     <string id="lETAfrompace">Estimated finished time based on average or last lap pace</string>
 	<string id="lETAdeviation">Deviation from required finish in hours, minutes and seconds</string>
-	<string id="lETArequiredpace">Required pace to meet required finish time</string>
     <string id="lElevationGain">Elevation gain</string>
     <string id="lElevationLoss">Elevation loss</string>
     <string id="lHeartrateZone">Heartrate zone</string>
@@ -148,6 +147,10 @@
     <string id="lLLPaceper100m">Pace of last lap in seconds per 100 meter (for track running)</string>
     <string id="lShowRedClock">Show red clock over all metrics before the start of an activity (useful for a race when the normal clock isn't visible)</string>
     <string id="lBatteryPerc">Battery percentage</string>
+    <string id="lTotalAscentinmpermin">Vertical ascent averaged over the whole activity (in meters/minute or feet/minute depending on watch settings)</string>
+    <string id="lTotalAscentinmperhour">Vertical ascent averaged over the whole activity (in meters/hour or feet/hour depending on watch settings)</string>
+    <string id="lVAM_hour">Vertical speed averaged over the last 30 seconds (in meters/hour or feet/hour depending on watch settings)</string>
+	<string id="lVAM_min">Vertical speed averaged over the last 30 seconds (in meters/minute or feet/minute depending on watch settings)</string>
  </strings>
 
   <settings>
@@ -221,7 +224,6 @@
         <listEntry value="16">@Strings.lPaceper3km</listEntry>        
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
@@ -270,6 +272,11 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="67">@Strings.lVertpace</listEntry>
+        <listEntry value="124">@Strings.lVAM_min</listEntry>
+        <listEntry value="108">@Strings.lVAM_hour</listEntry>
+        <listEntry value="125">@Strings.lTotalAscentinmpermin</listEntry>
+        <listEntry value="126">@Strings.lTotalAscentinmperhour</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         
@@ -300,7 +307,6 @@
         <listEntry value="16">@Strings.lPaceper3km</listEntry>        
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
@@ -349,6 +355,11 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="67">@Strings.lVertpace</listEntry>
+        <listEntry value="124">@Strings.lVAM_min</listEntry>
+        <listEntry value="108">@Strings.lVAM_hour</listEntry>
+        <listEntry value="125">@Strings.lTotalAscentinmpermin</listEntry>
+        <listEntry value="126">@Strings.lTotalAscentinmperhour</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         
@@ -374,7 +385,6 @@
         <listEntry value="16">@Strings.lPaceper3km</listEntry>        
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
@@ -421,6 +431,11 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="67">@Strings.lVertpace</listEntry>
+        <listEntry value="124">@Strings.lVAM_min</listEntry>
+        <listEntry value="108">@Strings.lVAM_hour</listEntry>
+        <listEntry value="125">@Strings.lTotalAscentinmpermin</listEntry>
+        <listEntry value="126">@Strings.lTotalAscentinmperhour</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         
@@ -445,7 +460,6 @@
         <listEntry value="16">@Strings.lPaceper3km</listEntry>        
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
@@ -492,6 +506,11 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="67">@Strings.lVertpace</listEntry>
+        <listEntry value="124">@Strings.lVAM_min</listEntry>
+        <listEntry value="108">@Strings.lVAM_hour</listEntry>
+        <listEntry value="125">@Strings.lTotalAscentinmpermin</listEntry>
+        <listEntry value="126">@Strings.lTotalAscentinmperhour</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         
@@ -523,7 +542,6 @@
         <listEntry value="16">@Strings.lPaceper3km</listEntry>        
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
@@ -572,6 +590,11 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="67">@Strings.lVertpace</listEntry>
+        <listEntry value="124">@Strings.lVAM_min</listEntry>
+        <listEntry value="108">@Strings.lVAM_hour</listEntry>
+        <listEntry value="125">@Strings.lTotalAscentinmpermin</listEntry>
+        <listEntry value="126">@Strings.lTotalAscentinmperhour</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         
@@ -602,7 +625,6 @@
         <listEntry value="16">@Strings.lPaceper3km</listEntry>        
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
@@ -651,6 +673,11 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="67">@Strings.lVertpace</listEntry>
+        <listEntry value="124">@Strings.lVAM_min</listEntry>
+        <listEntry value="108">@Strings.lVAM_hour</listEntry>
+        <listEntry value="125">@Strings.lTotalAscentinmpermin</listEntry>
+        <listEntry value="126">@Strings.lTotalAscentinmperhour</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         
@@ -673,7 +700,6 @@
         <listEntry value="16">@Strings.lPaceper3km</listEntry>
         <listEntry value="9">@Strings.lPaceper5km</listEntry>
         <listEntry value="17">@Strings.lPaceper300km</listEntry>
-        <listEntry value="67">@Strings.lVertpace</listEntry>
         <listEntry value="10">@Strings.lLapPace</listEntry>
         <listEntry value="11">@Strings.lLastLapPace</listEntry>
         <listEntry value="12">@Strings.lAvgPace</listEntry>
@@ -712,6 +738,11 @@
         <listEntry value="51">@Strings.lAltitude</listEntry>
         <listEntry value="52">@Strings.lElevationGain</listEntry>
         <listEntry value="53">@Strings.lElevationLoss</listEntry>
+        <listEntry value="67">@Strings.lVertpace</listEntry>
+        <listEntry value="124">@Strings.lVAM_min</listEntry>
+        <listEntry value="108">@Strings.lVAM_hour</listEntry>
+        <listEntry value="125">@Strings.lTotalAscentinmpermin</listEntry>
+        <listEntry value="126">@Strings.lTotalAscentinmperhour</listEntry>
         <listEntry value="89">@Strings.lTemp</listEntry>
         <listEntry value="105">@Strings.lTempeTemp</listEntry>
         

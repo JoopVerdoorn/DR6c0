@@ -52,6 +52,7 @@
     <property id="pTempeCalibration" type="number">0</property>
     <property id="poverruleWourkout" type="boolean">false</property>
     <property id="pShowRedClock" type="boolean">false</property>
+    <property id="pCCnumber" type="number">9999999</property>
   </properties>
 
 	

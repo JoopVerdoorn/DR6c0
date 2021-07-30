@@ -52,6 +52,7 @@ class CiqView extends ExtramemView {
     var uFontalertColorLow					= 5;
     hidden var mFontalertColorHigh			= Graphics.COLOR_PURPLE;
     var uFontalertColorHigh					= 4;
+    hidden var TotalVertSpeedinmpersec = 0;
             		            				
     function initialize() {
         ExtramemView.initialize();
@@ -129,7 +130,7 @@ class CiqView extends ExtramemView {
 			}
 		}
 		i = 0;	
-		for (i = 1; i < 11; ++i) {
+		for (i = 1; i < 7; ++i) {
 			Power[i] = 0;
 		}
 				
@@ -160,6 +161,33 @@ class CiqView extends ExtramemView {
            	//!Calculate lapCadence
             mCadenceTime	 = (info.currentCadence != null) ? mCadenceTime+1 : mCadenceTime;
             mElapsedCadence= (info.currentCadence != null) ? mElapsedCadence + info.currentCadence : mElapsedCadence;
+            
+            //! Calculate vertical speed
+    	    valueDesc = (info.totalDescent != null) ? info.totalDescent : 0;
+        	Diff1 = valueDesc - valueDesclast;
+	        valueDesc = (unitD == 1609.344) ? valueDesc*3.2808 : valueDesc;
+    	    valueAsc = (info.totalAscent != null) ? info.totalAscent : 0;
+        	Diff2 = valueAsc - valueAsclast;        
+	        valueAsc = (unitD == 1609.344) ? valueAsc*3.2808 : valueAsc;
+    	    valueDesclast = valueDesc;
+        	valueAsclast = valueAsc;
+	        CurrentVertSpeedinmpersec = Diff2-Diff1;
+	        TotalVertSpeedinmpersec = TotalVertSpeedinmpersec + CurrentVertSpeedinmpersec;
+    	    for (i = 1; i < 7; ++i) {
+	    	    if (metric[i] == 67 or metric[i] == 108) {
+					for (var j = 1; j < 30; ++j) {			
+						VertPace[31-j] = VertPace[30-j];
+					}
+					VertPace[1]	= CurrentVertSpeedinmpersec;
+					for (var j = 1; j < 31; ++j) {
+						totalVertPace = VertPace[j] + totalVertPace;
+					}
+					if (jTimertime>0) {		
+						AverageVertspeedinmper30sec= (jTimertime<31) ? totalVertPace/jTimertime : totalVertPace/30;
+						totalVertPace = 0;
+					}
+				}
+			}
   
             //! Calculate temperature compensation, B-variables reference cell number from cells of conversion excelsheet  		
             var B6 = 22; 			//! is cell B6
@@ -270,6 +298,113 @@ class CiqView extends ExtramemView {
 				    	B39 = 0;
 					}      
 					PwrCorrFactor = 1- (B24 - B25) - (B39-B38)/100;
+				}
+				
+				if (dynamics != null) {
+		 		    var data = dynamics.getRunningDynamics(); 
+		 		    if (data != null) {
+		    			groundContactBalance = data.groundContactBalance;
+    					groundContactTime = data.groundContactTime;  
+    					stanceTime = data.stanceTime;
+    					stepLength = data.stepLength;
+    					verticalOscillation = data.verticalOscillation;
+    					verticalRatio = data.verticalRatio;
+	    			} else {
+    					groundContactBalance = 0;
+    					groundContactTime = 0;  
+    					stanceTime = 0;
+    					stepLength = 0;
+    					verticalOscillation = 0;
+	    				verticalRatio = 0;
+    				}
+    			} else {
+    				groundContactBalance = 0;
+   					groundContactTime = 0;  
+	   				stanceTime = 0;
+   					stepLength = 0;
+   					verticalOscillation = 0;
+   					verticalRatio = 0;
+    			}
+
+        		for (i = 1; i < 7; ++i) {
+        			if (metric[i] == 109) {  
+        				rollgroundContactBalance[10] 								= rollgroundContactBalance[9];
+	            		rollgroundContactBalance[9] 								= rollgroundContactBalance[8];
+    	        		rollgroundContactBalance[8] 								= rollgroundContactBalance[7];
+        		    	rollgroundContactBalance[7] 								= rollgroundContactBalance[6];
+        			    rollgroundContactBalance[6] 								= rollgroundContactBalance[5];
+	        			rollgroundContactBalance[5] 								= rollgroundContactBalance[4];
+ 			       		rollgroundContactBalance[4] 								= rollgroundContactBalance[3];
+        				rollgroundContactBalance[3] 								= rollgroundContactBalance[2];
+        				rollgroundContactBalance[2] 								= rollgroundContactBalance[1];
+        				rollgroundContactBalance[1] 								= groundContactBalance;
+						AveragerollgroundContactBalance10sec	= (rollgroundContactBalance[1]+rollgroundContactBalance[2]+rollgroundContactBalance[3]+rollgroundContactBalance[4]+rollgroundContactBalance[5]+rollgroundContactBalance[6]+rollgroundContactBalance[7]+rollgroundContactBalance[8]+rollgroundContactBalance[9]+rollgroundContactBalance[10])/10;
+	    			}
+    				if (metric[i] == 110) {
+    					rollgroundContactTime[10] 						= rollgroundContactTime[9];
+	        			rollgroundContactTime[9] 						= rollgroundContactTime[8];
+    	    			rollgroundContactTime[8] 						= rollgroundContactTime[7];
+        				rollgroundContactTime[7] 						= rollgroundContactTime[6];
+	        			rollgroundContactTime[6] 						= rollgroundContactTime[5];
+	        			rollgroundContactTime[5] 						= rollgroundContactTime[4];
+ 			       		rollgroundContactTime[4] 						= rollgroundContactTime[3];
+        				rollgroundContactTime[3] 						= rollgroundContactTime[2];
+        				rollgroundContactTime[2] 						= rollgroundContactTime[1];
+        				rollgroundContactTime[1] 						= groundContactTime;
+						AveragerollgroundContactTime10sec	= (rollgroundContactTime[1]+rollgroundContactTime[2]+rollgroundContactTime[3]+rollgroundContactTime[4]+rollgroundContactTime[5]+rollgroundContactTime[6]+rollgroundContactTime[7]+rollgroundContactTime[8]+rollgroundContactTime[9]+rollgroundContactTime[10])/10;	
+	    			}
+	    			if (metric[i] == 111) {
+	    				rollstanceTime[10] 								= rollstanceTime[9];
+		        		rollstanceTime[9] 								= rollstanceTime[8];
+	    	    		rollstanceTime[8] 								= rollstanceTime[7];
+    	    			rollstanceTime[7] 								= rollstanceTime[6];
+        				rollstanceTime[6] 								= rollstanceTime[5];
+        				rollstanceTime[5] 								= rollstanceTime[4];
+ 		       			rollstanceTime[4] 								= rollstanceTime[3];
+        				rollstanceTime[3] 								= rollstanceTime[2];
+	        			rollstanceTime[2] 								= rollstanceTime[1];
+    	    			rollstanceTime[1] 								= stanceTime;
+						AveragerollstanceTime10sec	= (rollstanceTime[1]+rollstanceTime[2]+rollstanceTime[3]+rollstanceTime[4]+rollstanceTime[5]+rollstanceTime[6]+rollstanceTime[7]+rollstanceTime[8]+rollstanceTime[9]+rollstanceTime[10])/10;
+    				}
+    				if (metric[i] == 113) {
+	    				rollstepLength[10] 								= rollstepLength[9];
+		        		rollstepLength[9] 								= rollstepLength[8];
+    		    		rollstepLength[8] 								= rollstepLength[7];
+        				rollstepLength[7] 								= rollstepLength[6];
+        				rollstepLength[6] 								= rollstepLength[5];
+        				rollstepLength[5] 								= rollstepLength[4];
+	 		       		rollstepLength[4] 								= rollstepLength[3];
+    	    			rollstepLength[3] 								= rollstepLength[2];
+        				rollstepLength[2] 								= rollstepLength[1];
+        				rollstepLength[1] 								= stepLength;
+						AveragerollstepLength10sec	= (rollstepLength[1]+rollstepLength[2]+rollstepLength[3]+rollstepLength[4]+rollstepLength[5]+rollstepLength[6]+rollstepLength[7]+rollstepLength[8]+rollstepLength[9]+rollstepLength[10])/10; 
+    				}
+	    			if (metric[i] == 114) { 
+    					rollverticalOscillation[10] 					= rollverticalOscillation[9];
+	    	    		rollverticalOscillation[9] 						= rollverticalOscillation[8];
+    	    			rollverticalOscillation[8] 						= rollverticalOscillation[7];
+        				rollverticalOscillation[7] 						= rollverticalOscillation[6];
+        				rollverticalOscillation[6] 						= rollverticalOscillation[5];
+	        			rollverticalOscillation[5] 						= rollverticalOscillation[4];
+ 			       		rollverticalOscillation[4] 						= rollverticalOscillation[3];
+        				rollverticalOscillation[3] 						= rollverticalOscillation[2];
+        				rollverticalOscillation[2] 						= rollverticalOscillation[1];
+        				rollverticalOscillation[1] 						= verticalOscillation;
+						AveragerollverticalOscillation10sec	= (rollverticalOscillation[1]+rollverticalOscillation[2]+rollverticalOscillation[3]+rollverticalOscillation[4]+rollverticalOscillation[5]+rollverticalOscillation[6]+rollverticalOscillation[7]+rollverticalOscillation[8]+rollverticalOscillation[9]+rollverticalOscillation[10])/10;
+    				}
+	    			if (metric[i] == 115) {
+    					rollverticalRatio[10] 							= rollverticalRatio[9];
+	    	    		rollverticalRatio[9] 							= rollverticalRatio[8];
+    	    			rollverticalRatio[8] 							= rollverticalRatio[7];
+        				rollverticalRatio[7] 							= rollverticalRatio[6];
+        				rollverticalRatio[6] 							= rollverticalRatio[5];
+	        			rollverticalRatio[5] 							= rollverticalRatio[4];
+ 			       		rollverticalRatio[4] 							= rollverticalRatio[3];
+        				rollverticalRatio[3] 							= rollverticalRatio[2];
+        				rollverticalRatio[2] 							= rollverticalRatio[1];
+        				rollverticalRatio[1] 							= verticalRatio;
+						AveragerollverticalRatio10sec	= (rollverticalRatio[1]+rollverticalRatio[2]+rollverticalRatio[3]+rollverticalRatio[4]+rollverticalRatio[5]+rollverticalRatio[6]+rollverticalRatio[7]+rollverticalRatio[8]+rollverticalRatio[9]+rollverticalRatio[10])/10;
+					}
 				}
 			}
 

@@ -17,6 +17,7 @@
     <property id="pShowDemo" type="boolean">false</property>
     <property id="pDummysetting4version" type="boolean">true</property>
     <property id="pShowRedClock" type="boolean">false</property>
+    <property id="pCCnumber" type="number">9999999</property>
   </properties>
 
 	

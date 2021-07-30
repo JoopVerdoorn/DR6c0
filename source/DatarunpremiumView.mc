@@ -1,3 +1,4 @@
+using Toybox.Time;
 using Toybox.WatchUi as Ui;
 using Toybox.Application.Storage;
 using Toybox.Background;
@@ -126,7 +127,7 @@ class DatarunpremiumView extends Ui.DataField {
     	 metric[3]   	= mApp.getProperty("pMiddleLeftMetric");
     	 metric[4] 		= mApp.getProperty("pMiddleRightMetric");    
     	 metric[5]		= mApp.getProperty("pBottomLeftMetric");
-         metric[6]   	= mApp.getProperty("pBottomRightMetric"); 
+         metric[6]   	= 108; 
          uRoundedPace        = mApp.getProperty("pRoundedPace");
          uBacklight          = mApp.getProperty("pBacklight");
          umyNumber			 = mApp.getProperty("myNumber");
@@ -137,6 +138,7 @@ class DatarunpremiumView extends Ui.DataField {
          uETAfromLap		 = mApp.getProperty("pETAfromLap");
          uShowRedClock		 = mApp.getProperty("pShowRedClock");
          var uHrZones = UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
+         var uCCnumber = mApp.getProperty("pCCnumber");
 
         if (System.getDeviceSettings().paceUnits == System.UNIT_STATUTE) {
             unitP = 1609.344;

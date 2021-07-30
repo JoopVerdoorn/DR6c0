@@ -1,3 +1,4 @@
+using Toybox.Time;
 using Toybox.WatchUi as Ui;
 
 class DatarunPremiumwith6metricsApp extends Toybox.Application.AppBase {
@@ -120,6 +121,7 @@ class DatarunpremiumView extends Ui.DataField {
          uETAfromLap		 = mApp.getProperty("pETAfromLap");
          uShowRedClock		 = mApp.getProperty("pShowRedClock");
          var uHrZones = UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
+         var uCCnumber = mApp.getProperty("pCCnumber");
           	 
         if (System.getDeviceSettings().paceUnits == System.UNIT_STATUTE) {
             unitP = 1609.344;
