@@ -108,6 +108,15 @@ class CiqView extends DatarunpremiumView {
         	Temp = (fieldvalue != 0 ) ? (fieldvalue).toLong() : 0;
         	fieldvalue = (Temp /60000 % 60).format("%02d") + ":" + (Temp /1000 % 60).format("%02d");
         }
+        
+        //! Make ETA related metrics green if ETA is as desired or better, otherwise red
+      	if (metric[counter] == 13 or metric[counter] == 14 or metric[counter] == 15) {
+	      	if (mETA < mRacetime) {
+    	    	mColourFont = Graphics.COLOR_GREEN;
+        	} else {
+        		mColourFont = Graphics.COLOR_RED;
+        	}
+        }
 
     	dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     	

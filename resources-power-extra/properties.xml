@@ -67,7 +67,7 @@
 
 	
   <strings>
-    <string id="lDummysetting4version">Version 2.40 of Datarun premium with 6 metrics, main version (dummy setting)</string>
+    <string id="lDummysetting4version">Version 2.41 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lPaceMenu">___Pace items___</string>
@@ -136,7 +136,7 @@
 	<string id="lFTP">Functional treshold power, needed for Intensity factor and Training stress score</string>
 	<string id="lCP">Critical power, needed for Running Stress Score</string>
 	<string id="lIntensityFactor">Intensity Factor</string>
-	<string id="lTTS">Training Stress Score</string>
+	<string id="lTSS">Training Stress Score</string>
 	<string id="lRSS">Running Stress Score</string>
 	<string id="lRequiredPower">Boundaries of a static powerzone for warning signal, a format required like (227:284)</string>
     <string id="lWarningFreq">Frequency for the warning signal for operating out of powerzone</string>
@@ -286,6 +286,7 @@
     <string id="lverticalRatio">RunningDynamics vertical ratio (0 - 100%, requires running pod, HRM-run or HRM-tri)</string>
     <string id="lTotalAscentinmpermin">Vertical ascent averaged over the whole activity (in meters/minute or feet/minute depending on watch settings)</string>
     <string id="lTotalAscentinmperhour">Vertical ascent averaged over the whole activity (in meters/hour or feet/hour depending on watch settings)</string>
+    <string id="lElapsed">Elapsed time (actual time minus start of timer moment)</string>
 </strings>     
 
 
@@ -456,6 +457,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>
@@ -572,7 +574,7 @@
         <listEntry value="54">@Strings.lTEffect</listEntry>
         <listEntry value="87">@Strings.lkCalories</listEntry>
         <listEntry value="58">@Strings.lIntensityFactor</listEntry>
-        <listEntry value="59">@Strings.lTTS</listEntry>
+        <listEntry value="59">@Strings.lTSS</listEntry>
         <listEntry value="60">@Strings.lRSS</listEntry>
 
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
@@ -598,6 +600,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>
@@ -714,7 +717,7 @@
         <listEntry value="54">@Strings.lTEffect</listEntry>
         <listEntry value="87">@Strings.lkCalories</listEntry>
         <listEntry value="58">@Strings.lIntensityFactor</listEntry>
-        <listEntry value="59">@Strings.lTTS</listEntry>
+        <listEntry value="59">@Strings.lTSS</listEntry>
         <listEntry value="60">@Strings.lRSS</listEntry>
 
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
@@ -849,7 +852,7 @@
         <listEntry value="54">@Strings.lTEffect</listEntry>
         <listEntry value="87">@Strings.lkCalories</listEntry>
         <listEntry value="58">@Strings.lIntensityFactor</listEntry>
-        <listEntry value="59">@Strings.lTTS</listEntry>
+        <listEntry value="59">@Strings.lTSS</listEntry>
         <listEntry value="60">@Strings.lRSS</listEntry>
 
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
@@ -983,7 +986,7 @@
         <listEntry value="54">@Strings.lTEffect</listEntry>
         <listEntry value="87">@Strings.lkCalories</listEntry>
         <listEntry value="58">@Strings.lIntensityFactor</listEntry>
-        <listEntry value="59">@Strings.lTTS</listEntry>
+        <listEntry value="59">@Strings.lTSS</listEntry>
         <listEntry value="60">@Strings.lRSS</listEntry>
 
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
@@ -1010,6 +1013,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>
@@ -1126,7 +1130,7 @@
         <listEntry value="54">@Strings.lTEffect</listEntry>
         <listEntry value="87">@Strings.lkCalories</listEntry>
         <listEntry value="58">@Strings.lIntensityFactor</listEntry>
-        <listEntry value="59">@Strings.lTTS</listEntry>
+        <listEntry value="59">@Strings.lTSS</listEntry>
         <listEntry value="60">@Strings.lRSS</listEntry>
 
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>
@@ -1152,6 +1156,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>
@@ -1268,7 +1273,7 @@
         <listEntry value="54">@Strings.lTEffect</listEntry>
         <listEntry value="87">@Strings.lkCalories</listEntry>
         <listEntry value="58">@Strings.lIntensityFactor</listEntry>
-        <listEntry value="59">@Strings.lTTS</listEntry>
+        <listEntry value="59">@Strings.lTSS</listEntry>
         <listEntry value="60">@Strings.lRSS</listEntry>
 
         <listEntry value="998">@Strings.lAltitudeMenu</listEntry>

@@ -1,6 +1,6 @@
 using Toybox.WatchUi as Ui;
+
 class CiqView extends ExtramemView {	
-	hidden var mETA							= 0;
 	hidden var uETAfromLap 					= true;
 	var Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
 	hidden var TotalVertSpeedinmpersec = 0;
@@ -30,10 +30,8 @@ class CiqView extends ExtramemView {
             //! Calculate vertical speed
     	    valueDesc = (info.totalDescent != null) ? info.totalDescent : 0;
         	Diff1 = valueDesc - valueDesclast;
-	        valueDesc = (unitD == 1609.344) ? valueDesc*3.2808 : valueDesc;
     	    valueAsc = (info.totalAscent != null) ? info.totalAscent : 0;
         	Diff2 = valueAsc - valueAsclast;        
-	        valueAsc = (unitD == 1609.344) ? valueAsc*3.2808 : valueAsc;
     	    valueDesclast = valueDesc;
         	valueAsclast = valueAsc;
 	        CurrentVertSpeedinmpersec = Diff2-Diff1;
@@ -116,6 +114,15 @@ class CiqView extends ExtramemView {
         	Temp = (fieldvalue != 0 ) ? (fieldvalue).toLong() : 0;
         	fieldvalue = (Temp /60000 % 60).format("%02d") + ":" + (Temp /1000 % 60).format("%02d");
         }
+        
+        //! Make ETA related metrics green if ETA is as desired or better, otherwise red
+      	if (metric[counter] == 13 or metric[counter] == 14 or metric[counter] == 15) {
+	      	if (mETA < mRacetime) {
+    	    	mColourFont = Graphics.COLOR_GREEN;
+        	} else {
+        		mColourFont = Graphics.COLOR_RED;
+        	}
+        }
         		
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
         if ( fieldformat.equals("time" ) == true ) {    
@@ -138,7 +145,9 @@ class CiqView extends ExtramemView {
         	} else {
         		dc.drawText(x, y, Garminfont, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			}
-        }        
+        }
+        mColourFont = originalFontcolor;       
+      	dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);   
         if ( counter != 3) {        
        		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        	} else {
@@ -146,8 +155,6 @@ class CiqView extends ExtramemView {
        		dc.drawText(xl, yl-18, Graphics.FONT_XTINY,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        	}
-        mColourFont = originalFontcolor;
-		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
     }
 	
 	function LapactionNoPower () {

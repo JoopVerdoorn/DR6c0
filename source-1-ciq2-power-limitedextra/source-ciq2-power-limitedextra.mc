@@ -528,8 +528,10 @@ class CiqView extends ExtramemView {
         	Temp = (fieldvalue != 0 ) ? (fieldvalue).toLong() : 0;
         	fieldvalue = (Temp /60000 % 60).format("%02d") + ":" + (Temp /1000 % 60).format("%02d");
         }
+
         		
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
+        
         if ( fieldformat.equals("time" ) == true ) {   
 	    		var fTimerSecs = (fieldvalue % 60).format("%02d");
         		var fTimer = (fieldvalue / 60).format("%d") + ":" + fTimerSecs;  //! Format time as m:ss

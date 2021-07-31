@@ -37,7 +37,7 @@
 
 	
   <strings>
-    <string id="lDummysetting4version">Version 2.40 of Datarun premium with 6 metrics, main version (dummy setting)</string>
+    <string id="lDummysetting4version">Version 2.41 of Datarun premium with 6 metrics, main version (dummy setting)</string>
 	<string id="lTimeMenu">___Time items___</string>
 	<string id="lDistanceMenu">___Distance items___</string>
 	<string id="lMiscellaneousMenu">___Miscellaneous items___</string>
@@ -151,6 +151,7 @@
     <string id="lTotalAscentinmperhour">Vertical ascent averaged over the whole activity (in meters/hour or feet/hour depending on watch settings)</string>
     <string id="lVAM_hour">Vertical speed averaged over the last 30 seconds (in meters/hour or feet/hour depending on watch settings)</string>
 	<string id="lVAM_min">Vertical speed averaged over the last 30 seconds (in meters/minute or feet/minute depending on watch settings)</string>
+	<string id="lElapsed">Elapsed time (actual time minus start of timer moment)</string>
  </strings>
 
   <settings>
@@ -208,6 +209,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>
@@ -291,6 +293,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>
@@ -526,6 +529,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>
@@ -609,6 +613,7 @@
         <listEntry value="1">@Strings.lTimerLap</listEntry>
         <listEntry value="2">@Strings.lTimerLastLap</listEntry>
         <listEntry value="3">@Strings.lTimerAvgLap</listEntry>
+        <listEntry value="116">@Strings.lElapsed</listEntry>
         
         <listEntry value="991">@Strings.lDistanceMenu</listEntry>
         <listEntry value="4">@Strings.lDistDistance</listEntry>

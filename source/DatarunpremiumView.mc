@@ -89,7 +89,7 @@ class DatarunpremiumView extends Ui.DataField {
     hidden var uRacedistance                = 42195;
     hidden var uRacetime					= "03:59:48";
 	hidden var mRacetime  					= 0;
-	var mETA								= 0;
+	hidden var mETA							= 0;
 	var uETAfromLap 						= true;
 	
     hidden var mLastLapDistMarker           = 0;
@@ -122,23 +122,23 @@ class DatarunpremiumView extends Ui.DataField {
          DataField.initialize();
 
          var mApp = Application.getApp();
-         metric[1]    	= mApp.getProperty("pUpperLeftMetric");
-         metric[2]   	= mApp.getProperty("pUpperRightMetric");
-    	 metric[3]   	= mApp.getProperty("pMiddleLeftMetric");
-    	 metric[4] 		= mApp.getProperty("pMiddleRightMetric");    
-    	 metric[5]		= mApp.getProperty("pBottomLeftMetric");
-         metric[6]   	= 108; 
-         uRoundedPace        = mApp.getProperty("pRoundedPace");
-         uBacklight          = mApp.getProperty("pBacklight");
-         umyNumber			 = mApp.getProperty("myNumber");
-         uShowDemo			 = mApp.getProperty("pShowDemo");
-         uMilClockAltern	 = mApp.getProperty("pMilClockAltern");
-         uRacedistance		 = mApp.getProperty("pRacedistance");
-         uRacetime			 = mApp.getProperty("pRacetime");
-         uETAfromLap		 = mApp.getProperty("pETAfromLap");
-         uShowRedClock		 = mApp.getProperty("pShowRedClock");
-         var uHrZones = UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
-         var uCCnumber = mApp.getProperty("pCCnumber");
+         metric[1]	    	= mApp.getProperty("pUpperLeftMetric");
+         metric[2]  	 	= mApp.getProperty("pUpperRightMetric");
+    	 metric[3]   		= mApp.getProperty("pMiddleLeftMetric");
+    	 metric[4] 			= mApp.getProperty("pMiddleRightMetric");    
+    	 metric[5]			= mApp.getProperty("pBottomLeftMetric");
+         metric[6]   		= mApp.getProperty("pBottomRightMetric");
+         uRoundedPace       = mApp.getProperty("pRoundedPace");
+         uBacklight         = mApp.getProperty("pBacklight");
+         umyNumber			= mApp.getProperty("myNumber");
+         uShowDemo			= mApp.getProperty("pShowDemo");
+         uMilClockAltern	= mApp.getProperty("pMilClockAltern");
+         uRacedistance		= mApp.getProperty("pRacedistance");
+         uRacetime			= mApp.getProperty("pRacetime");
+         uETAfromLap		= mApp.getProperty("pETAfromLap");
+         uShowRedClock		= mApp.getProperty("pShowRedClock");
+         var uHrZones 		= UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
+         var uCCnumber 		= mApp.getProperty("pCCnumber");
 
         if (System.getDeviceSettings().paceUnits == System.UNIT_STATUTE) {
             unitP = 1609.344;
