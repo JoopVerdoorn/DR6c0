@@ -99,8 +99,6 @@ class ExtramemView extends DatarunpremiumView {
 		disablelabel[6] 			= mApp.getProperty("pdisablelabel6");
 		utempcalibration 			= mApp.getProperty("pTempeCalibration");
 		
-		startTime = (jTimertime == 0) ? Toybox.System.getClockTime() : startTime;
-		
 		if(Toybox.AntPlus has :RunningDynamics) {
 			dynamics = new Toybox.AntPlus.RunningDynamics(null);
 		}
