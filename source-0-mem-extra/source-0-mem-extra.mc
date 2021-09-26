@@ -35,7 +35,6 @@ class ExtramemView extends DatarunpremiumView {
 	var kCalories							= 0;
 	var mElapsedCadence   					= 0;
 	var mLastLapCadenceMarker      			= 0;    
-    var mCurrentCadence    					= 0; 
     var mLastLapElapsedCadence				= 0;
     var mCadenceTime						= 0;
     var mLapTimerTimeCadence				= 0;    
@@ -241,6 +240,7 @@ class ExtramemView extends DatarunpremiumView {
             	fieldFormat[i] = "0decimal";           	
         	}  else if (metric[i] == 61) {
            		fieldValue[i] = (info.currentCadence != null) ? Math.round(info.currentCadence/2) : 0;
+           		fieldValue[i] = (ucadenceWorkaround == true) ? fieldValue[i]*2 : fieldValue[i];  //! workaround multiply by two for FR945LTE and Fenix 6 series
             	fieldLabel[i] = "RCadence";
             	fieldFormat[i] = "0decimal";           	
         	}  else if (metric[i] == 62) {
@@ -472,6 +472,7 @@ class ExtramemView extends DatarunpremiumView {
             	CFMFormat = "0decimal";           	
         	}  else if (uClockFieldMetric == 61) {
            		CFMValue = (info.currentCadence != null) ? Math.round(info.currentCadence/2) : 0;
+           		CFMValue = (ucadenceWorkaround == true) ? CFMValue*2 : CFMValue;  //! workaround multiply by two for FR945LTE and Fenix 6 series
             	CFMFormat = "0decimal";           	
         	}  else if (uClockFieldMetric == 62) {
            		CFMValue = (info.currentSpeed != null) ? 3.6*((Pace1+Pace2+Pace3)/3)*1000/unitP : 0;

@@ -61,7 +61,7 @@ class DatarunpremiumView extends Ui.DataField {
     hidden var mColourLine;
     hidden var mColourBackGround;
    
-    hidden var mLapTimerTime   = 0;
+    hidden var mLapTimerTime   				= 0;
 	hidden var mElapsedDistance				= 0;
     hidden var mTimerRunning                = false;	
     hidden var unitP                        = 1000.0;
@@ -117,6 +117,7 @@ class DatarunpremiumView extends Ui.DataField {
 	hidden var AverageHeartrate 			= 0; 
 	hidden var mLapElapsedDistance 			= 0;
 	hidden var uShowRedClock				= false;
+	hidden var ucadenceWorkaround			= false;
 
     function initialize() {
          DataField.initialize();
@@ -139,6 +140,7 @@ class DatarunpremiumView extends Ui.DataField {
          uShowRedClock		= mApp.getProperty("pShowRedClock");
          var uHrZones 		= UserProfile.getHeartRateZones(UserProfile.getCurrentSport());
          var uCCnumber 		= mApp.getProperty("pCCnumber");
+         ucadenceWorkaround = mApp.getProperty("pcadenceWorkaround");
 
         if (System.getDeviceSettings().paceUnits == System.UNIT_STATUTE) {
             unitP = 1609.344;
@@ -216,9 +218,6 @@ class DatarunpremiumView extends Ui.DataField {
 		AverageHeartrate = Math.round((mHeartrateTime != 0) ? mElapsedHeartrate/mHeartrateTime : 0);  		
 		LapHeartrate = (mLapTimerTimeHR != 0) ? Math.round(mLapElapsedHeartrate/mLapTimerTimeHR) : 0; 					
 		LastLapHeartrate			= (mLastLapTimerTime != 0) ? Math.round(mLastLapElapsedHeartrate/mLastLapTimerTime) : 0;
-
-        //! Calculate lap time
-        mLapTimerTime = jTimertime - mLastLapTimeMarker;				
 
         //! Calculate lap distance
         mLapElapsedDistance = 0.0;
@@ -389,7 +388,7 @@ class DatarunpremiumView extends Ui.DataField {
         	    fieldFormat[i] = "0decimal";
 			} else if (metric[i] == 50) {
 				fieldValue[i] = (info.currentCadence != null) ? info.currentCadence : 0; 
-				fieldValue[i] = (ID0 == 4163) ? fieldValue[i]*2 : fieldValue[i];  //! multiply by two for FR945LTE  
+				fieldValue[i] = (ucadenceWorkaround == true) ? fieldValue[i]*2 : fieldValue[i];  //! workaround multiply by two for FR945LTE and Fenix 6 series  
     	        fieldLabel[i] = "Cadence";
         	    fieldFormat[i] = "0decimal";
 			} else if (metric[i] == 51) {
