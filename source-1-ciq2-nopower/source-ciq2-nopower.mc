@@ -115,7 +115,9 @@ class CiqView extends DatarunpremiumView {
         	} else {
         		dc.drawText(x, y, Graphics.FONT_NUMBER_MEDIUM, fieldvalue, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			}
-        }        
+        }
+        mColourFont = originalFontcolor;       
+      	dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);     
         if ( counter != 3) {        
        		dc.drawText(xl, yl, Graphics.FONT_XTINY,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        	} else {
