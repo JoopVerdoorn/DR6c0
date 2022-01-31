@@ -32,7 +32,6 @@ class CiqView extends ExtramemView {
     var uFTPHumid 							= 70;
     var uRealAltitude 						= 2;
     var uFTPAltitude 						= 200;
-    var workoutTarget 						;
     hidden var hasWorkoutStep 				= false;
     hidden var WorkoutStepLowBoundary		= 0;
     hidden var WorkoutStepHighBoundary		= 999;
@@ -40,11 +39,7 @@ class CiqView extends ExtramemView {
     var AveragePower						= 0;
     var WorkoutStepNr						= 0;
     var WorkoutStepDuration 				= 0; 
-    var StartTimeNewStep					= 0;
     var StartDistanceNewStep				= 0;
-    var RemainingWorkoutTime  				= 0;
-    var RemainingWorkoutDistance			= 0;
-    var WorkoutStepDurationType  			= 9;
     hidden var AveragePower3sec  	 		= 0;
     hidden var AveragePower5sec  	 		= 0;
     hidden var AveragePower10sec  	 		= 0;
@@ -75,7 +70,7 @@ class CiqView extends ExtramemView {
 		uCP		 	 	 = mApp.getProperty("pCP");
 		uWeight			 = mApp.getProperty("pWeight");
 		uPowerTarget	 = mApp.getProperty("pPowerTarget");
-		uOnlyPwrCorrFactor= mApp.getProperty("pOnlyPwrCorrFactor");
+		uOnlyPwrCorrFactor = mApp.getProperty("pOnlyPwrCorrFactor");
 		uPwrTempcorrect	 = mApp.getProperty("pPwrTempcorrect");
 		uFTPTemp	 	 = mApp.getProperty("pFTPTemp");
 		uManTemp	 	 = mApp.getProperty("pManTemp");
@@ -173,6 +168,8 @@ class CiqView extends ExtramemView {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin2);
 		} else if (mySettings.screenWidth == 280 and mySettings.screenHeight == 280) {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin3);
+		} else if (mySettings.screenWidth == 416 and mySettings.screenHeight == 416) {
+			Garminfont = Ui.loadResource(Rez.Fonts.Garmin4);
 		} else {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
 		}	
