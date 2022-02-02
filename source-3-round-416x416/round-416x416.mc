@@ -58,7 +58,7 @@ class DeviceView extends PowerView {
 
 		for (var i = 1; i < 7; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
-	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"120,117,126,022,132,126,064");
+	    		Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"120,117,126,020,134,126,064");
 			} else if ( i == 2 ) {	//!upper row, right
 				Formatting(dc,i,fieldValue[i],fieldFormat[i],fieldLabel[i],"294,117,312,211,132,290,064");
 	       	} else if ( i == 3 ) {  //!middle row, left

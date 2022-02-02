@@ -166,12 +166,16 @@ class CiqView extends ExtramemView {
 				
 		if (mySettings.screenWidth == 260 and mySettings.screenHeight == 260) {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin2);
+			Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin6);
 		} else if (mySettings.screenWidth == 280 and mySettings.screenHeight == 280) {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin3);
+			Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin7);
 		} else if (mySettings.screenWidth == 416 and mySettings.screenHeight == 416) {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin4);
+			Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin8);
 		} else {
 			Garminfont = Ui.loadResource(Rez.Fonts.Garmin1);
+			Garminfontgroot = Ui.loadResource(Rez.Fonts.Garmin5);
 		}	
 		WorkoutStepNr = 0;
     }
@@ -1070,9 +1074,23 @@ class CiqView extends ExtramemView {
         if ( counter != 3) {        
 			dc.drawText(xl, yl, Labelfont,  fieldlabel, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        	} else {
-       		dc.drawText(xl, yl-36, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       		dc.drawText(xl, yl-18, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
-       		dc.drawText(xl, yl, Labelfont,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       	    if (mySettings.screenWidth == 260) {
+       	    	dc.drawText(xl, yl-40, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl-18, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl+4, Labelfont,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		} else if (mySettings.screenWidth == 280) {
+       	    	dc.drawText(xl, yl-43, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl-19, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl+4, Labelfont,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		} else if (mySettings.screenWidth == 416) {
+       	    	dc.drawText(xl, yl-64, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl-29, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl+6, Labelfont,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		} else {
+       		    dc.drawText(xl, yl-38, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl-18, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl+2, Labelfont,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		}
        	}
     }
 
