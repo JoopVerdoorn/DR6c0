@@ -47,12 +47,10 @@ class DeviceView extends PowerView {
 		//! Display metrics
         dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 
+		//! Show clock with current time in top
 		myTime = Toybox.System.getClockTime(); 
     	strTime = myTime.hour.format("%02d") + ":" + myTime.min.format("%02d"); 		
-		//! Show clock with current time in top
-		if (uMilClockAltern == 0) {	
-			dc.drawText(108, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
-		}
+		dc.drawText(108, -4, Graphics.FONT_MEDIUM, strTime, Graphics.TEXT_JUSTIFY_CENTER);
 	
 		for (var i = 1; i < 7; ++i) {
 	    	if ( i == 1 ) {			//!upper row, left
@@ -95,7 +93,6 @@ class DeviceView extends PowerView {
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 	
 		if (licenseOK == true) {
-      		dc.drawText(109, 36, Graphics.FONT_XTINY, "DR6c0", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(109, 109, Graphics.FONT_TINY, "Registered !!", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(74, 145, Graphics.FONT_XTINY, "License code: ", Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
 			dc.drawText(164, 145, Graphics.FONT_XTINY, mtest, Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
