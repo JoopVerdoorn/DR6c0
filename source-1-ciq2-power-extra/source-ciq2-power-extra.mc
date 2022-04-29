@@ -78,7 +78,7 @@ class CiqView extends ExtramemView {
 	hidden var overruleWourkout					= false;
     hidden var mPowerWarningunder				= 0;
     hidden var mPowerWarningupper 				= 999;
-    var ElapsedDistance                         = 1;
+    hidden var ElapsedDistance                  = 0.00001;
     
             		            				
     function initialize() {
@@ -552,6 +552,7 @@ class CiqView extends ExtramemView {
             mPowerWarningunder = mPowerWarningunder.toNumber();
             mPowerWarningupper = mPowerWarningupper.toNumber(); 
 
+		    ElapsedDistance = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
 		    if (Activity has :getCurrentWorkoutStep) {
 			    workoutTarget = Toybox.Activity.getCurrentWorkoutStep();
 			    hasWorkoutStep = true;
@@ -573,6 +574,13 @@ class CiqView extends ExtramemView {
 				    RemainingWorkoutTime = WorkoutStepDuration - (jTimertime - StartTimeNewStep);
 			    } else if (WorkoutStepDurationType == 1) {
 				    RemainingWorkoutDistance = WorkoutStepDuration/unitD - (ElapsedDistance - StartDistanceNewStep);
+System.println("RemainingWorkoutDistance " + RemainingWorkoutDistance);
+System.println("WorkoutStepDuration " +WorkoutStepDuration );
+System.println("unitD " +unitD );
+System.println("ElapsedDistance " +ElapsedDistance );
+System.println("StartDistanceNewStep " +StartDistanceNewStep );
+System.println("___________________________________________________________");
+
 			    } else if (WorkoutStepDuration == 9999999) {
 				    RemainingWorkoutDistance = 0;
 			    }			
@@ -756,8 +764,6 @@ class CiqView extends ExtramemView {
 		//! Calculate IF and TTS
 		mIntensityFactor = (uFTP != 0) ? mNormalizedPow / uFTP : 0;
 		mTTS = (uFTP != 0) ? (jTimertime * mNormalizedPow * mIntensityFactor)/(uFTP * 3600) * 100 : 999;
-
-		var ElapsedDistance = (info.elapsedDistance != null) ? info.elapsedDistance / unitD : 0;
 
 		dc.setColor(mColourFont, Graphics.COLOR_TRANSPARENT);
 		AveragePower = (info.averagePower != null) ? info.averagePower : 0;
