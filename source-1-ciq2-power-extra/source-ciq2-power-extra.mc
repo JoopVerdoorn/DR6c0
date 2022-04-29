@@ -574,13 +574,6 @@ class CiqView extends ExtramemView {
 				    RemainingWorkoutTime = WorkoutStepDuration - (jTimertime - StartTimeNewStep);
 			    } else if (WorkoutStepDurationType == 1) {
 				    RemainingWorkoutDistance = WorkoutStepDuration/unitD - (ElapsedDistance - StartDistanceNewStep);
-System.println("RemainingWorkoutDistance " + RemainingWorkoutDistance);
-System.println("WorkoutStepDuration " +WorkoutStepDuration );
-System.println("unitD " +unitD );
-System.println("ElapsedDistance " +ElapsedDistance );
-System.println("StartDistanceNewStep " +StartDistanceNewStep );
-System.println("___________________________________________________________");
-
 			    } else if (WorkoutStepDuration == 9999999) {
 				    RemainingWorkoutDistance = 0;
 			    }			
