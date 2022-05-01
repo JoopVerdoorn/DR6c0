@@ -99,6 +99,7 @@ class DatarunpremiumView extends Ui.DataField {
 	hidden var AverageHeartrate 			= 0; 
 	hidden var mLapElapsedDistance 			= 0;
 	hidden var uShowRedClock				= false;
+	hidden var c0Version					= true;
 
     function initialize() {
          DataField.initialize();
