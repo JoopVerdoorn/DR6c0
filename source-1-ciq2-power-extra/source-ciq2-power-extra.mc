@@ -584,6 +584,16 @@ class CiqView extends ExtramemView {
 			    RemainingWorkoutTime = 0;
 			    RemainingWorkoutDistance = 0;
 		    }
+		    
+		    if (Activity has :getCurrentWorkoutStep and overruleWourkout == false) {
+	        	if (WorkoutStepHighBoundary > 0) {
+	        		mPowerWarningunder = WorkoutStepLowBoundary;
+    	    		mPowerWarningupper = WorkoutStepHighBoundary; 
+        		} else {
+        			mPowerWarningunder = mPowerWarningunder.toNumber();
+                    mPowerWarningupper = mPowerWarningupper.toNumber(); 
+        		}
+        	}
 
 		    var runalertPower = 0;
 		    if ( uLapPwr4alerts == 0 ) {
