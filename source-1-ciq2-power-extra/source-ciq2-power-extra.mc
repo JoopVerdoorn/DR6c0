@@ -1216,6 +1216,10 @@ class CiqView extends ExtramemView {
        	    	dc.drawText(xl, yl-64, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        		    dc.drawText(xl, yl-29, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        		    dc.drawText(xl, yl+6, Labelfont,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		} else if (mySettings.screenWidth == 218) {
+       	    	dc.drawText(xl, yl-36, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl-17, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+       		    dc.drawText(xl, yl+1, Labelfont,  fieldlabel.substring(2,3), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        		} else {
        		    dc.drawText(xl, yl-38, Labelfont,  fieldlabel.substring(0,1) , Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
        		    dc.drawText(xl, yl-18, Labelfont,  fieldlabel.substring(1,2), Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
