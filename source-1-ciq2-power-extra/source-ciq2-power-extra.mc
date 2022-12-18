@@ -1188,18 +1188,6 @@ class CiqView extends ExtramemView {
        			DistinClockfield = false;
        		}
 		}		
-		
-		//! Conditions for showing the demoscreen       
-        if (uShowDemo == false) {
-        	if (licenseOK == false && jTimertime > 900)  {
-        		uShowDemo = true;        		
-        	}
-        }
-
-	   //! Check whether demoscreen is showed or the metrics 
-	   if (uShowDemo == false ) {
-
-	   } 
 	   
 	}
 
